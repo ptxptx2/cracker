@@ -1,0 +1,54 @@
+// inject mutator code
+console.log('here in content-wapo.js');
+
+// load proper images
+
+// find all divs that are inline-photo
+// look for IMG with class placeholder
+// remove class, change value of src
+
+/* 
+pl = document.getElementsByClassName("inline-photo");
+for ( i = 0; i < pl.length; i++ ) {
+    for ( j = 0; j < pl[i].childNodes.length; j++ ) {
+	if ( (pl[i].childNodes[j].nodeName == 'IMG')
+	     && (pl[i].childNodes[j].className.indexOf('placeholder') != -1) ) {
+	    pl[i].childNodes[j].className = '';
+	    pl[i].childNodes[j].src = pl[i].childNodes[j].attributes['data-hi-res-src'].nodeValue;
+	}
+    }
+}
+
+*/
+
+
+pl = document.getElementsByClassName("unprocessed");
+for ( i = 0; i < pl.length; i++ ) {
+    if ( (pl[i].nodeName == 'IMG')
+	 && (pl[i].className.indexOf('placeholder') != -1) ) {
+	 pl[i].src = pl[i].attributes['data-hi-res-src'].nodeValue;
+    }
+}
+
+i = 0;
+while ( pl.length > i) {
+    if ( (pl[i].nodeName == 'IMG')
+	 && (pl[i].className.indexOf('placeholder') != -1) ) {
+	 pl[i].className = '';
+    }
+    else {
+         i++;
+    }
+}    
+
+// different style - look for pg-visual and put hi-res in for img
+
+pl = document.getElementsByClassName("lazyld");
+for ( i = 0; i < pl.length; i++ ) {
+    if ( (pl[i].nodeName == 'IMG') ) {
+	 pl[i].src = pl[i].attributes['data-hi-res-src'].nodeValue;
+    }
+}
+/* 
+still a problem for large spreads 
+*/
