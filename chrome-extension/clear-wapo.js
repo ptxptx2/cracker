@@ -11,6 +11,17 @@ for ( i = 0; i < d.length; i++ ) {
     }
 }
 
+// remove paywall
+var g = document.getElementById("fusion-app");
+for ( i = 0; i < g.children.length; i++ ) {
+    h = g.children[i];
+    if ( h.getAttribute("data-qa") != null && h.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+	h.parentNode.removeChild(h);	
+	// do it once
+	break;
+    }
+}
+
 // html and body - remove position style and overlfow style
 var d = document.getElementsByTagName("BODY");
 d[0].style.overflow = "scroll";
@@ -38,7 +49,7 @@ function runEmbedded() {
 	    text_node.innerHTML = adds[i].content;
 //    	    var the_text = document.createTextNode(adds[i].content);
 //    	    text_node.appendChild(the_text);
-	    text_node.classList.add( "font--body", "font-copy",  "color-gray-darkest", "ma-0", "pad-bottom-md",  "undefined" );
+	    text_node.classList.add( "font--body", "font-copy",  "color-gray-darkest", "ma-0", "pb-md" );
 	    div_node.appendChild(text_node);
 	    t.appendChild(div_node);
 	}
@@ -76,6 +87,26 @@ function runEmbedded() {
 //    	    text_node.appendChild(the_text);
 	    text_node.classList.add( "font--body", "font-copy",  "color-gray-darkest", "ma-0", "pad-bottom-md",  "undefined" );
 	    div_node.appendChild(text_node);
+	    t.appendChild(div_node);
+	}
+	else if ( adds[i].type == "oembed_response" ) {
+	    var div_node = document.createElement("DIV");
+	    var oembed_node = document.createElement("DIV");
+	    if ( adds[i].subtype == "twitter" ) {
+		// <div data-oembed-type="twitter" class="">
+		oembed_node.setAttribute( "data-oembed-type", adds[i].subtype );
+		// <twitter-widget class="twitter-tweet twitter-tweet-rendered" id="twitter-widget-0" style="position: static; visibility: visible; display: block; transform: rotate(0deg); max-width: 100%; width: 500px; min-width: 220px; margin-top: 10px; margin-bottom: 10px;" data-tweet-id="408983789830815744">
+		// </twitter-widget>
+		var twitter_node = document.createElement("TWITTER-WIDGET")
+		twitter_node.classList.add( "twitter-tweet", "twitter-tweet-rendered" );
+		twitter_node.setAttribute( "id", "twitter-widget-0" );
+
+		twitter_node.innerHTML = adds[i].html;
+
+// <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	    }
+	    oembed_node.appendChild(twitter_node);
+	    div_node.appendChild(oembed_node);
 	    t.appendChild(div_node);
 	}
 		
