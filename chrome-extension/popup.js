@@ -19,7 +19,7 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
- 			        case "theatlantic.com":
+ 			        case "www.theatlantic.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-theatlantic.js"} );
 			            break;
@@ -53,4 +53,5 @@
 
 /* 
 fix icon
+console.log does not seem to work
 */
