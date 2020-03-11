@@ -14,6 +14,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
+ 			        case "theatlantic.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-theatlantic.js"} );
+			            break;
  			        case "www.thedailybeast.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-thedailybeast.js"} );
