@@ -3,9 +3,15 @@ d = document.getElementById("gateway-content");
 if ( d != null ) {
     d.parentNode.removeChild(d);
 }
+// remove gateway_outer_wrapper
+d = document.getElementsByClassName("gateway_outer_wrapper");
+if ( d != null && d[0] != null ) {
+    d[0].parentNode.removeChild(d[0]);
+}
+
 // allow scroll
 a = document.getElementsByClassName("css-mcm29f");
-if ( a != null ) {
+if ( a != null && a[0] != null) {
     a[0].style.overflow = "scroll";
     // remove black stripe
     a = document.getElementsByClassName("css-1bd8bfl");
