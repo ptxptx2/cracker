@@ -23,6 +23,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-theatlantic.js"} );
 			            break;
+ 			        case "www.theguardian.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-theguardian.js"} );
+			            break;
  			        case "www.thedailybeast.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-thedailybeast.js"} );
