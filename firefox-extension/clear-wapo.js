@@ -9,16 +9,27 @@ for ( i = 0; i < d.length; i++ ) {
 	// do it once
 	break;
     }
+    if ( (d[i].src.indexOf( 'www.washingtonpost.com/subscribe' ) != -1 ) )  {
+	e = d[i].parentElement;
+	e.parentNode.removeChild(e);	
+	// do it once
+	break;
+   }
 }
 
 // remove paywall
 var g = document.getElementById("fusion-app");
-for ( i = 0; i < g.children.length; i++ ) {
-    h = g.children[i];
-    if ( h.getAttribute("data-qa") != null && h.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-	h.parentNode.removeChild(h);	
-	// do it once
-	break;
+if ( g == null ) {
+    g = document.getElementById("__next");
+}    
+if ( g != null ) {
+    for ( i = 0; i < g.children.length; i++ ) {
+	h = g.children[i];
+	if ( h.getAttribute("data-qa") != null && h.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+	    h.parentNode.removeChild(h);	
+	    // do it once
+	    break;
+	}
     }
 }
 
@@ -32,7 +43,12 @@ d[0].parentElement.style.overflow = "scroll";
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
-    adds = window.Fusion.globalContent.content_elements;
+    if ( window.Fusion.globalContent != null ) {
+	adds = window.Fusion.globalContent.content_elements;
+    }
+    else {
+	adds = __NEXT_DATA__.props.pageProps.globalContent.content_elements;
+    }
     t = document.getElementsByClassName("teaser-content")[0].children[0];
 
     // skip text already there
@@ -123,4 +139,7 @@ function embed(fn) {
 }
 
 embed(runEmbedded);
+
+
+
 
