@@ -105,7 +105,7 @@ function runEmbedded() {
 	    div_node.appendChild(text_node);
 	    t.appendChild(div_node);
 	}
-	else if ( adds[i].type == "oembed_response" ) {
+	else if ( adds[i].type == "oembed_response-prev" ) {
 	    var div_node = document.createElement("DIV");
 	    var oembed_node = document.createElement("DIV");
 	    if ( adds[i].subtype == "twitter" ) {
@@ -125,10 +125,24 @@ function runEmbedded() {
 	    div_node.appendChild(oembed_node);
 	    t.appendChild(div_node);
 	}
+	else if ( adds[i].type == "oembed_response" ) {
+	    
+	    // "<blockquote class="twitter-tweet">
+	    //		<p lang="en" dir="ltr"> Tesla stock price is too high imo</p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1256239815256797184?ref_src=twsrc%5Etfw">May 1, 2020</a>
+	    // </blockquote>
+// <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+// "
+
+	    var bq_node = document.createElement("DIV");
+	    bq_node.innerHTML = adds[i].raw_oembed.html
+    
+	    t.appendChild(bq_node);
+	}
 		
     }
     var oUrl = document.querySelector("meta[property='og:url']").getAttribute("content");
     window.history.pushState("","", oUrl);
+    twttr.widgets.load()
 }
 
 
