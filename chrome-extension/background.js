@@ -11,7 +11,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
           conditions: [new chrome.declarativeContent.PageStateMatcher({
-              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|theguardian.com'},
+              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|theguardian.com|mediaite.com'},
           })
 		      ],
           actions: [new chrome.declarativeContent.ShowPageAction()]

@@ -52,6 +52,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-wapo.js"} );
 			            break;
+				case "www.mediaite.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-mediaite.js"} );
+			            break;
 			        default:
 				    console.log( "unrecognized : ", tabs[0].url );
 			    }

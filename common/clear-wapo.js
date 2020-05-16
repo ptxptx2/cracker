@@ -83,12 +83,16 @@ function runEmbedded() {
             var fig_caption_node = document.createElement("FIGCAPTION");
             fig_node.classList.add("center", "mb-md", "ml-neg-gutter", "mr-neg-gutter", "ml-auto-ns", "mr-auto-ns", "hide-for-print");
             img_node.src = adds[i].resized_urls.large;
-            img_node.alt = adds[i].caption;
+	    if ( adds[i].caption != null ) {
+		img_node.alt = adds[i].caption;
+	    }
             img_node.width = adds[i].width;
             img_node.classList.add("mw-100");
             fig_node.appendChild(img_node);
             fig_caption_node.classList.add("left", "ml-gutter", "mr-gutter", "mr-auto-ns", "ml-auto-ns", "gray-dark", "font--subhead", "font-xxxs", "mt-xs", "mb-sm");
-            fig_caption_node.innerHTML = adds[i].caption;
+	    if ( adds[i].caption != null ) {
+		fig_caption_node.innerHTML = adds[i].caption;
+	    }
             fig_node.appendChild(fig_caption_node);
             div_node.appendChild(fig_node);
             t.appendChild(div_node);
