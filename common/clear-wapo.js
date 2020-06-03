@@ -24,11 +24,24 @@ if ( g == null ) {
 }    
 if ( g != null ) {
     for ( i = 0; i < g.children.length; i++ ) {
-	h = g.children[i];
-	if ( h.getAttribute("data-qa") != null && h.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-	    h.parentNode.removeChild(h);	
+	p = g.children[i];
+	if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+	    p.parentNode.removeChild(p);	
 	    // do it once
 	    break;
+	}
+	for ( j = 0; j < p.children.length; j++ ) {
+	    q = p.children[j];
+ 	    for ( k = 0; k < q.children.length; k++ ) {
+		r = q.children[k];
+		if ( r.getAttribute("id") != null ) {
+		    if (r.id.indexOf('paywall') != -1 ) {
+			r.parentNode.removeChild(r);
+			// do it once
+			break;
+		    }
+		}
+	    }
 	}
     }
 }
@@ -82,7 +95,12 @@ function runEmbedded() {
 	    var img_node = document.createElement("IMG");
             var fig_caption_node = document.createElement("FIGCAPTION");
             fig_node.classList.add("center", "mb-md", "ml-neg-gutter", "mr-neg-gutter", "ml-auto-ns", "mr-auto-ns", "hide-for-print");
-            img_node.src = adds[i].resized_urls.large;
+            if ( adds[i].resized_urls != null ) {
+		img_node.src = adds[i].resized_urls.large;
+	    }
+	    else {
+		img_node.src = adds[i].url;
+	    }
 	    if ( adds[i].caption != null ) {
 		img_node.alt = adds[i].caption;
 	    }
@@ -97,8 +115,9 @@ function runEmbedded() {
             div_node.appendChild(fig_node);
             t.appendChild(div_node);
 	}
-	else if ( adds[i].type == "video" ) {
-	}
+//	else if ( adds[i].type == "video" ) {
+//	    
+//	}
 	else if ( adds[i].type == "header" ) {
             var div_node = document.createElement("DIV");
 	    var text_node = document.createElement("H3");
@@ -146,7 +165,7 @@ function runEmbedded() {
     }
     var oUrl = document.querySelector("meta[property='og:url']").getAttribute("content");
     window.history.pushState("","", oUrl);
-    twttr.widgets.load()
+//    twittr.widgets.load()
 }
 
 
