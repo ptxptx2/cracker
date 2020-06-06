@@ -160,12 +160,13 @@ function runEmbedded() {
 	    bq_node.innerHTML = adds[i].raw_oembed.html
     
 	    t.appendChild(bq_node);
+	    window.twttr.widgets.load( bq_node );
 	}
 		
     }
     var oUrl = document.querySelector("meta[property='og:url']").getAttribute("content");
     window.history.pushState("","", oUrl);
-//    twittr.widgets.load()
+//    window.twittr.widgets.load();
 }
 
 
@@ -176,7 +177,6 @@ function embed(fn) {
 }
 
 embed(runEmbedded);
-
 
 
 
