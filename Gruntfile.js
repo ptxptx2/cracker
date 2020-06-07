@@ -52,6 +52,32 @@ module.exports = function(grunt) {
 	      ],
 	  },
       },
+      compress: {
+	  chrome: {
+	      options: {
+		  archive: 'dist/chrome-extension/cracker.zip'
+	      },
+	      files: [
+		  {
+		      expand: true,
+		      cwd: 'dist/chrome-extension',
+		      src: ['**']
+		  }
+	      ]
+	  },
+	  firefox: {
+	      options: {
+		  archive: 'dist/firefox-extension/cracker.zip'
+	      },
+	      files: [
+		  {
+		      expand: true,
+		      cwd: 'dist/firefox-extension',
+		      src: ['**']
+		  }
+	      ]
+	  },
+      },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -113,6 +139,7 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 //  grunt.loadNpmTasks('grunt-contrib-concat');
 //  grunt.loadNpmTasks('grunt-contrib-uglify');
 //  grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -121,6 +148,9 @@ module.exports = function(grunt) {
 
   // Default task.
     //  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
-    grunt.registerTask('default', [ 'clean', 'copy']);
+    grunt.registerTask('default', [ 'clean', 'copy', 'compress']);
 
 };
+
+// build the corresponding zips
+
