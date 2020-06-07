@@ -1,0 +1,18 @@
+{
+    "name": "cracker",
+    "title": "Cracker",
+    "description": "Crack the paywall.",
+    "version": "1.0.2",
+    "homepage": "https://github.com/perci/cracker",
+    "author": {
+	"name": "Percival Tieng"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git://github.com/perci/cracker.git"
+    },
+    "bugs": "https://github.com/perci/cracker/issues",
+    "dependencies": {
+    }
+}
+

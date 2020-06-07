@@ -17,3 +17,13 @@ cp ../../common/* .
 cp ../../firefox-extension/* .
 cd target/firefox-extension
 find . | zip -@ cracker-firefox.zip
+
+####
+
+after checkout
+
+-- npm install
+
+to build - into dist
+
+-- grunt
