@@ -18,27 +18,34 @@ for ( i = 0; i < d.length; i++ ) {
 }
 
 // remove paywall
-var g = document.getElementById("fusion-app");
-if ( g == null ) {
-    g = document.getElementById("__next");
-}    
+var g = null;
+g = document.getElementById("paywall-default");
 if ( g != null ) {
-    for ( i = 0; i < g.children.length; i++ ) {
-	p = g.children[i];
-	if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-	    p.parentNode.removeChild(p);	
-	    // do it once
-	    break;
-	}
-	for ( j = 0; j < p.children.length; j++ ) {
-	    q = p.children[j];
- 	    for ( k = 0; k < q.children.length; k++ ) {
-		r = q.children[k];
-		if ( r.getAttribute("id") != null ) {
-		    if (r.id.indexOf('paywall') != -1 ) {
-			r.parentNode.removeChild(r);
-			// do it once
-			break;
+    g.parentNode.removeChild(g);	
+}
+else {
+    g = document.getElementById("__next");
+    if ( g == null ) {
+	g = document.getElementById("fusion-app");
+    }    
+    if ( g != null ) {
+	for ( i = 0; i < g.children.length; i++ ) {
+	    p = g.children[i];
+	    if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+		p.parentNode.removeChild(p);	
+		// do it once
+		break;
+	    }
+	    for ( j = 0; j < p.children.length; j++ ) {
+		q = p.children[j];
+ 		for ( k = 0; k < q.children.length; k++ ) {
+		    r = q.children[k];
+		    if ( r.getAttribute("id") != null ) {
+			if (r.id.indexOf('paywall') != -1 ) {
+			    r.parentNode.removeChild(r);
+			    // do it once
+			    break;
+			}
 		    }
 		}
 	    }
