@@ -24,27 +24,33 @@ if ( g != null ) {
     g.parentNode.removeChild(g);	
 }
 else {
-    g = document.getElementById("__next");
-    if ( g == null ) {
-	g = document.getElementById("fusion-app");
-    }    
+    g = document.getElementsByClassName("paywall-overlay")
     if ( g != null ) {
-	for ( i = 0; i < g.children.length; i++ ) {
-	    p = g.children[i];
-	    if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-		p.parentNode.removeChild(p);	
-		// do it once
-		break;
-	    }
-	    for ( j = 0; j < p.children.length; j++ ) {
-		q = p.children[j];
- 		for ( k = 0; k < q.children.length; k++ ) {
-		    r = q.children[k];
-		    if ( r.getAttribute("id") != null ) {
-			if (r.id.indexOf('paywall') != -1 ) {
-			    r.parentNode.removeChild(r);
-			    // do it once
-			    break;
+	g[0].parentNode.removeChild(g[0])
+    }
+    else {
+	g = document.getElementById("__next");
+	if ( g == null ) {
+	    g = document.getElementById("fusion-app");
+	}    
+	if ( g != null ) {
+	    for ( i = 0; i < g.children.length; i++ ) {
+		p = g.children[i];
+		if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+		    p.parentNode.removeChild(p);	
+		    // do it once
+		    break;
+		}
+		for ( j = 0; j < p.children.length; j++ ) {
+		    q = p.children[j];
+ 		    for ( k = 0; k < q.children.length; k++ ) {
+			r = q.children[k];
+			if ( r.getAttribute("id") != null ) {
+			    if (r.id.indexOf('paywall') != -1 ) {
+				r.parentNode.removeChild(r);
+				// do it once
+				break;
+			    }
 			}
 		    }
 		}
