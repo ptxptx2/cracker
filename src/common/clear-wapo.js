@@ -17,6 +17,16 @@ for ( i = 0; i < d.length; i++ ) {
    }
 }
 
+// remove subscription side panel
+// search for class="logo"
+// search for <h3>We've noticed you're blocking ads.</h3>
+var sp = document.getElementsByClassName("logo")
+if ( sp != null && sp.length != 0 ) {
+    // delete 4 parents up
+    p = sp[0].parentNode.parentNode.parentNode.parentNode
+    p.style = "display: hidden";
+}
+    
 // remove paywall
 var g = null;
 g = document.getElementById("paywall-default");
