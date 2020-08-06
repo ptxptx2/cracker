@@ -25,7 +25,7 @@ if ( g != null ) {
 }
 else {
     g = document.getElementsByClassName("paywall-overlay")
-    if ( g != null ) {
+    if ( g != null && g.length != 0 ) {
 	g[0].parentNode.removeChild(g[0])
     }
     else {
