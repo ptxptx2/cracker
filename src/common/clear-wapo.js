@@ -79,6 +79,7 @@ d[0].parentElement.style.overflow = "scroll";
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
+
     if ( window.Fusion.globalContent != null ) {
 	adds = window.Fusion.globalContent.content_elements;
     }
@@ -180,13 +181,39 @@ function runEmbedded() {
 // "
 
 	    var bq_node = document.createElement("DIV");
-	    bq_node.innerHTML = adds[i].raw_oembed.html
+	    bq_node.innerHTML = adds[i].raw_oembed.html + "<BR><BR>"
     
 	    t.appendChild(bq_node);
-	    window.twttr.widgets.load( bq_node );
+	    try {
+		window.twttr.widgets.load( bq_node );
+	    }
+	    catch (err) {
+	    }
+	    
 	}
 		
+	else if ( adds[i].type == "oembed_response-new" ) {
+	    
+	    // <div className="mw-99 flex justify-center mb-sm">
+                // <AmpOembed rawOembed={rawOembed} subtype={subtype} />
+                // </div>
+
+	    var bq_node = document.createElement("DIV");
+	    bq_node.classList.add( "mw-99", "flex", "justify-center", "mb-sm" );
+
+	    var amp_node = document.createElementNS( ".", "AmpOembed" )
+	    amp_node.setAttributeNS( ".", "rawOembed", adds[i].raw_oembed );
+	    amp_node.setAttributeNS( ".", "subtype", adds[i].subtype );
+	    bq_node.appendChild(amp_node);
+
+	    t.appendChild(bq_node);
+
+	    
+	    
+	}
+
     }
+	
     var oUrl = document.querySelector("meta[property='og:url']").getAttribute("content");
     window.history.pushState("","", oUrl);
 //    window.twittr.widgets.load();
