@@ -9,7 +9,6 @@ d = document.getElementById("reg-overlay");
 if ( d != null ) {
     d.parentNode.removeChild(d);
 }
-
 // delete ncm-container div class
 d = document.getElementsByClassName("ncm-container");
 if ( d != null && d.length != 0) {
