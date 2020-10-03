@@ -15,9 +15,9 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-bloomberg.js"} );
 			            break;
-				case "www.chicagotribune.com":
+				case "www.eastbaytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-latimes.js"} );
+							   { file: "clear-eastbaytimes.js"} );
 			            break;
 			        case "www.forbes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
