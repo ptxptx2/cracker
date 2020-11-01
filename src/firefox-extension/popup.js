@@ -10,9 +10,13 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-bloomberg.js"} );
 			            break;
-				case "www.chicagotribune.com":
+				case "www.bostonglobe.com":
 			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-latimes.js"} );
+							   { file: "clear-bostonglobe.js"} );
+			            break;
+				case "www.eastbaytimes.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-eastbaytimes.js"} );
 			            break;
 				case "www.forbes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
