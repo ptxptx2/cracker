@@ -19,6 +19,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-bostonglobe.js"} );
 			            break;
+				case "markets.businessinsider.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-businessinsider.js"} );
+			            break;
 				case "www.eastbaytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-eastbaytimes.js"} );

@@ -1,3 +1,6 @@
+// import { removeElementById, removeFirstElementByClassName } from './helpers.js';
+import * as helpers from '../common/helpers.js';
+
 // we dig deeper ad
 
 // remove iframe div
@@ -28,17 +31,12 @@ if ( sp != null && sp.length != 0 ) {
 }
     
 // remove paywall
-var g = null;
-g = document.getElementById("paywall-default");
-if ( g != null ) {
-    g.parentNode.removeChild(g);	
-}
-else {
-    g = document.getElementsByClassName("paywall-overlay")
-    if ( g != null && g.length != 0 ) {
-	g[0].parentNode.removeChild(g[0])
-    }
-    else {
+//g = document.getElementById("paywall-default");
+//if ( g != null ) {
+//    g.parentNode.removeChild(g);	
+//}
+if ( !helpers.removeElementById("paywall-default") ) {
+    if ( !helpers.removeFirstElementByClassName("paywall-overlay") ) {
 	g = document.getElementById("__next");
 	if ( g == null ) {
 	    g = document.getElementById("fusion-app");
@@ -51,10 +49,12 @@ else {
 		    // do it once
 		    break;
 		}
+
 		for ( j = 0; j < p.children.length; j++ ) {
 		    q = p.children[j];
  		    for ( k = 0; k < q.children.length; k++ ) {
 			r = q.children[k];
+
 			if ( r.getAttribute("id") != null ) {
 			    if (r.id.indexOf('paywall') != -1 ) {
 				r.parentNode.removeChild(r);
@@ -62,18 +62,30 @@ else {
 				break;
 			    }
 			}
+
 		    }
 		}
+		
 	    }
 	}
     }
 }
+
 
 // html and body - remove position style and overlfow style
 var d = document.getElementsByTagName("BODY");
 d[0].style.overflow = "scroll";
 d[0].style.position = "static";
 d[0].parentElement.style.overflow = "scroll";
+
+// remove leaderboard-wrapper
+//g = document.getElementById("leaderboard-wrapper");
+//if ( g != null ) {
+//    g.parentNode.removeChild(g);	
+//}
+
+// remove overflow-hidden class div
+var val = helpers.removeFirstElementByClassName("overflow-hidden");
 
 
 // put back text

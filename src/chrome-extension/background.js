@@ -4,6 +4,9 @@
 
 'use strict';
 
+// import { removeElementById } from './helpers.js';
+// import { removeFirstElementByClassName } from './helpers.js';
+
 chrome.runtime.onInstalled.addListener(function() {
   chrome.storage.sync.set({color: '#3aa757'}, function() {
     console.log("The color is green.");
@@ -11,7 +14,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
           conditions: [new chrome.declarativeContent.PageStateMatcher({
-              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com'},
+              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com|markets.businessinsider.com'},
           })
 		      ],
           actions: [new chrome.declarativeContent.ShowPageAction()]

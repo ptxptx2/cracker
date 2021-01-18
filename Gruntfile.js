@@ -1,5 +1,7 @@
 'use strict';
 
+const webpackConfig = require('./webpack.config.js');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -18,7 +20,7 @@ module.exports = function(grunt) {
       copy: {
 	  main: {
 	      files: [
-		  // copy common files
+		  // copy common files not webpacked
 		  {
 		      expand: true,
 		      cwd: 'src/common',
@@ -29,6 +31,21 @@ module.exports = function(grunt) {
 		  {
 		      expand: true,
 		      cwd: 'src/common',
+		      src: '**',		      
+		      dest: 'dist/firefox-extension',
+		      filter: 'isFile'
+		  },
+		  // copy webpacked common files
+		  {
+		      expand: true,
+		      cwd: 'dist/webpacked',
+		      src: '**',		      
+		      dest: 'dist/chrome-extension',
+		      filter: 'isFile'
+		  },
+		  {
+		      expand: true,
+		      cwd: 'dist/webpacked',
 		      src: '**',		      
 		      dest: 'dist/firefox-extension',
 		      filter: 'isFile'
@@ -134,6 +151,9 @@ module.exports = function(grunt) {
         tasks: ['jshint:test', 'qunit']
       },
     },
+    webpack: {
+      myConfig: webpackConfig,
+    },
   });
 
   // These plugins provide necessary tasks.
@@ -145,10 +165,11 @@ module.exports = function(grunt) {
 //  grunt.loadNpmTasks('grunt-contrib-qunit');
 //  grunt.loadNpmTasks('grunt-contrib-jshint');
 //  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-webpack');
 
   // Default task.
     //  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
-    grunt.registerTask('default', [ 'clean', 'copy', 'compress']);
+    grunt.registerTask('default', [ 'clean', 'webpack', 'copy', 'compress']);
 
 };
 
