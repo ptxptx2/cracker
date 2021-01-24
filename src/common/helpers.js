@@ -10,7 +10,7 @@ export function removeFirstElementByClassName ( classname ) {
 }
 
 export function removeFirstElementByTagName ( tagname ) {
-	var d = document.getElementsByTagName(classname);
+	var d = document.getElementsByTagName(tagname);
 	if ( d != null && d.length != 0 ) {
 	    d[0].parentNode.removeChild( d[0] );
 	    return 1;
