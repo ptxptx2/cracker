@@ -1,10 +1,17 @@
-// import { removeElementById, removeFirstElementByClassName } from './helpers.js';
 import * as helpers from '../common/helpers.js';
 
 // we dig deeper ad
 
 // remove iframe div
-var d = document.getElementsByTagName("IFRAME");
+var d;
+var e;
+var f;
+var g;
+var i;
+var j;
+var k;
+
+d = document.getElementsByTagName("IFRAME");
 for ( i = 0; i < d.length; i++ ) {
     if ( (d[i].src.indexOf( 'subscribe.washingtonpost.com' ) != -1 ) ) {
 	e = d[i].parentElement.parentElement;
@@ -23,11 +30,11 @@ for ( i = 0; i < d.length; i++ ) {
 // remove subscription side panel
 // search for class="logo"
 // search for <h3>We've noticed you're blocking ads.</h3>
-var sp = document.getElementsByClassName("logo")
-if ( sp != null && sp.length != 0 ) {
+d = document.getElementsByClassName("logo")
+if ( d != null && d.length != 0 ) {
     // delete 4 parents up
-    p = sp[0].parentNode.parentNode.parentNode.parentNode
-    p.style = "display: hidden";
+    e = d[0].parentNode.parentNode.parentNode.parentNode
+    e.style = "display: hidden";
 }
     
 // remove paywall
@@ -37,27 +44,27 @@ if ( sp != null && sp.length != 0 ) {
 //}
 if ( !helpers.removeElementById("paywall-default") ) {
     if ( !helpers.removeFirstElementByClassName("paywall-overlay") ) {
-	g = document.getElementById("__next");
-	if ( g == null ) {
-	    g = document.getElementById("fusion-app");
+	d = document.getElementById("__next");
+	if ( d == null ) {
+	    d = document.getElementById("fusion-app");
 	}    
-	if ( g != null ) {
+	if ( d != null ) {
 	    for ( i = 0; i < g.children.length; i++ ) {
-		p = g.children[i];
-		if ( p.getAttribute("data-qa") != null && p.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-		    p.parentNode.removeChild(p);	
+		e = d.children[i];
+		if ( e.getAttribute("data-qa") != null && e.getAttribute("data-qa").indexOf('paywall') != -1 ) {
+		    e.parentNode.removeChild(e);	
 		    // do it once
 		    break;
 		}
 
-		for ( j = 0; j < p.children.length; j++ ) {
-		    q = p.children[j];
- 		    for ( k = 0; k < q.children.length; k++ ) {
-			r = q.children[k];
+		for ( j = 0; j < e.children.length; j++ ) {
+		    f = e.children[j];
+ 		    for ( k = 0; k < f.children.length; k++ ) {
+			g = f.children[k];
 
-			if ( r.getAttribute("id") != null ) {
-			    if (r.id.indexOf('paywall') != -1 ) {
-				r.parentNode.removeChild(r);
+			if ( g.getAttribute("id") != null ) {
+			    if (g.id.indexOf('paywall') != -1 ) {
+				g.parentNode.removeChild(g);
 				// do it once
 				break;
 			    }
@@ -73,7 +80,7 @@ if ( !helpers.removeElementById("paywall-default") ) {
 
 
 // html and body - remove position style and overlfow style
-var d = document.getElementsByTagName("BODY");
+d = document.getElementsByTagName("BODY");
 d[0].style.overflow = "scroll";
 d[0].style.position = "static";
 d[0].parentElement.style.overflow = "scroll";
@@ -91,6 +98,10 @@ var val = helpers.removeFirstElementByClassName("overflow-hidden");
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
+
+    var adds;
+    var t;
+    var i;
 
     if ( window.Fusion.globalContent != null ) {
 	adds = window.Fusion.globalContent.content_elements;

@@ -20,6 +20,7 @@
 							   { file: "clear-bostonglobe.js"} );
 			            break;
 				case "markets.businessinsider.com":
+				case "www.businessinsider.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-businessinsider.js"} );
 			            break;

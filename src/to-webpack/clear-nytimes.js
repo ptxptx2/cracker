@@ -1,16 +1,13 @@
+import * as helpers from '../common/helpers.js';
+
 // remove gateway-content
-d = document.getElementById("gateway-content");
-if ( d != null ) {
-    d.parentNode.removeChild(d);
-}
+helpers.removeElementById("gateway-content");
+
 // remove gateway_outer_wrapper
-d = document.getElementsByClassName("gateway_outer_wrapper");
-if ( d != null && d[0] != null ) {
-    d[0].parentNode.removeChild(d[0]);
-}
+helpers.removeFirstElementByClassName("gateway_outer_wrapper");
 
 // allow scroll
-a = document.getElementsByClassName("css-mcm29f");
+var a = document.getElementsByClassName("css-mcm29f");
 if ( a != null && a[0] != null) {
     a[0].style.overflow = "scroll";
     // remove black stripe
@@ -19,8 +16,9 @@ if ( a != null && a[0] != null) {
     a[0].style.display = "none";
 }
 
+
     // set site-content to position:static
-d = document.getElementById("site-content");
+var d = document.getElementById("site-content");
 if ( d != null ) {
     d.style.position = 'static';
 }
@@ -39,6 +37,3 @@ for ( i=0; i<nl.length; i++ ) {
     nl[i].parentNode.removeChild(nl[i]);
 };
 
-
-
-// fix if error on any step

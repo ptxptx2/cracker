@@ -1,3 +1,5 @@
+import * as helpers from '../common/helpers.js';
+
 // overflow to display
 d = document.getElementsByTagName("BODY");
 if ( d != null && d.length != 0) {
@@ -5,23 +7,13 @@ if ( d != null && d.length != 0) {
 }
 
 // delete reg-overlay div class
-d = document.getElementById("reg-overlay");
-if ( d != null ) {
-    d.parentNode.removeChild(d);
-}
+helpers.removeElementById("reg-overlay");
+
 // delete ncm-container div class
-d = document.getElementsByClassName("ncm-container");
-if ( d != null && d.length != 0) {
-    d[0].parentNode.removeChild(d[0]);
-}
+helpers.removeFirstElementByClassName("ncm-container");
 
 // delete metering-modal
-d = document.getElementsByTagName("metering-modal");
-if ( d != null && d.length != 0) {
-    d[0].parentNode.removeChild(d[0]);
-}
-
-
+helpers.removeFirstElementByTagName("metering-modal");
 
 
 // the "window..." command does not work directly
