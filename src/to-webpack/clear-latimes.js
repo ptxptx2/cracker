@@ -1,7 +1,7 @@
 import * as helpers from '../common/helpers.js';
 
 // overflow to display
-d = document.getElementsByTagName("BODY");
+var d = document.getElementsByTagName("BODY");
 if ( d != null && d.length != 0) {
     d[0].style.overflow = "scroll";
 }
@@ -14,7 +14,6 @@ helpers.removeFirstElementByClassName("ncm-container");
 
 // delete metering-modal
 helpers.removeFirstElementByTagName("metering-modal");
-
 
 // the "window..." command does not work directly
 
