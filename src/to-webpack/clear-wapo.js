@@ -91,11 +91,11 @@ d[0].parentElement.style.overflow = "scroll";
 //    g.parentNode.removeChild(g);	
 //}
 
-// remove overflow-hidden class div
-helpers.removeFirstElementByClassName("overflow-hidden");
-
 // remove leaderboard-overlay
 helpers.removeElementById("leaderboard-overlay");
+
+// remove overflow-hidden class div
+helpers.removeFirstElementByAttributeAndClass("data-qa", "leaderboard", "overflow-hidden");
 
 // put back text
 function runEmbedded() {
