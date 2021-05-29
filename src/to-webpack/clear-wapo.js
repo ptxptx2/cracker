@@ -113,13 +113,12 @@ function runEmbedded() {
     }
     t = document.getElementsByClassName("teaser-content")[0].children[0];
 
-    // skip text already there
-    var j = 0;
-    for ( i = 0; j < t.children.length; i++ ) {
-	if (adds[i].type == "text" ) {
-	    j++;
-	}
+    // skip text already there - i starts at 1 to skip lede art
+    var i = 1;
+    for ( j = 0; j < t.children.length; j++ ) {
+	i++;
     }
+    
     for ( ; i < adds.length; i++ ) {
 	if ( adds[i].type == "text" ) {
             var div_node = document.createElement("DIV");
