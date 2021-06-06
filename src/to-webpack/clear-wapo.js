@@ -113,10 +113,13 @@ function runEmbedded() {
     }
     t = document.getElementsByClassName("teaser-content")[0].children[0];
 
-    // skip text already there - i starts at 1 to skip lede art
-    var i = 1;
+    // compare what's there (t) and adds - add what's missing
+    var i = 0;
     for ( j = 0; j < t.children.length; j++ ) {
-	i++;
+	// if t.children[j]."data-qa" != 'subscribe-promo' then count
+	if ( t.children[j].children[0].getAttribute["data-qa"] != "subscribe-promo" ) {
+	    i++;
+	}
     }
     
     for ( ; i < adds.length; i++ ) {
