@@ -37,6 +37,11 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-foreignpolicy.js"} );
 			            break;
+			        case "www.fortune.com":
+			        case "fortune.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-fortune.js"} );
+			            break;
 				case "www.latimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
