@@ -126,6 +126,7 @@ function runEmbedded() {
 	if ( adds[i].type == "text" ) {
             var div_node = document.createElement("DIV");
 	    var text_node = document.createElement("P");
+	    div_node.classList.add( "w-700", "mr-auto-ns", "ml-auto-ns" );
 	    text_node.innerHTML = adds[i].content;
 //    	    var the_text = document.createTextNode(adds[i].content);
 //    	    text_node.appendChild(the_text);

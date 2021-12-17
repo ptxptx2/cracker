@@ -58,3 +58,19 @@ export function removeElement(element) {
     }
 }
 
+export function replaceAllTagClassName( tagName, oldClassName, newClassName ) {
+    if ( tagName == null || oldClassName  == null || newClassName  == null ) {
+	return 0
+    }
+    // replace all oldClassName with newClassName
+    var d = document.getElementsByClassName(oldClassName);
+    if ( d.length > 0 ) {
+	// iterate over elements to filter for tag names
+	for ( var i = 0; i < d.length; i++ ) {
+	    if ( d[i].tagName == tagName ) {
+		d[i].classList.remove(oldClassName);
+		d[i].classList.add(newClassName);
+	    }
+	}
+    }
+}
