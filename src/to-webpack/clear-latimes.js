@@ -9,6 +9,9 @@ if ( d != null && d.length != 0) {
 // delete reg-overlay div class
 helpers.removeElementById("reg-overlay");
 
+// delete fc-ab-root
+helpers.removeFirstElementByClassName("fc-ab-root");
+
 // delete ncm-container div class
 helpers.removeFirstElementByClassName("ncm-container");
 
