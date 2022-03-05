@@ -74,3 +74,16 @@ export function replaceAllTagClassName( tagName, oldClassName, newClassName ) {
 	}
     }
 }
+
+export function removeClassNameFromFirstElement( className, tagName ) {
+    if ( tagName == null || className  == null ) {
+	return 0
+    }
+    var d = document.getElementsByTagName(tagName);
+    if ( d != null && d.length > 0 ) {
+	d[0].classList.remove(className);
+    }
+}
+
+
+    

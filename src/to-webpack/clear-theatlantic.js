@@ -22,3 +22,4 @@ helpers.removeFirstElementByClassName("Paywall_root__ciuNi");
 // allow scroll
 var d = document.getElementsByTagName("BODY");
 d[0].classList.remove("Gate_withGate__5Ql7N");
+d[0].style.overflow = "scroll";

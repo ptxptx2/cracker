@@ -25,3 +25,12 @@ d = document.getElementById("piano-inline-content-wrapper");
 if ( d != null ) {
     d.style = "display: block";
 }
+
+
+// 20220305
+
+// delete overlay - class = "dialog-base"
+helpers.removeFirstElementByClassName( "dialog-base" );
+
+// scroll - body - class = js-dialog-open
+helpers.removeClassNameFromFirstElement( "js-dialog-open", "BODY" );
