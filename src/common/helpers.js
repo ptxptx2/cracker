@@ -6,6 +6,14 @@ export function removeFirstElementByClassName ( classname ) {
     return removeFirstElement(d);
 }
 
+export function removeElementsByClassName ( classname ) {
+    if ( classname == null ) {
+	return 0
+    }
+    while ( removeFirstElementByClassName( classname ) ) {
+    }
+}
+
 export function removeFirstElementByTagName ( tagname ) {
     if ( tagname == null ) {
 	return 0
@@ -79,9 +87,16 @@ export function removeClassNameFromFirstElement( className, tagName ) {
     if ( tagName == null || className  == null ) {
 	return 0
     }
-    var d = document.getElementsByTagName(tagName);
-    if ( d != null && d.length > 0 ) {
-	d[0].classList.remove(className);
+    var d = document.getElementsByClassName(className);
+    if ( d.length > 0 ) {
+	// iterate over elements to filter for tag names
+	for ( var i = 0; i < d.length; i++ ) {
+	    if ( d != null && d.length > 0 ) {
+		if ( d[i].tagName == tagName ) {
+		    d[i].classList.remove(className);
+		}
+	    }
+	}
     }
 }
 

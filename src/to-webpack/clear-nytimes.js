@@ -41,3 +41,13 @@ for ( i=0; i<nl.length; i++ ) {
     nl[i].parentNode.removeChild(nl[i]);
 };
 
+// for cooking.nytimes.com
+
+// clear element with class nytc---growler---container
+helpers.removeFirstElementByClassName("nytc---modal-window---windowContainer");
+
+// remove tag = html, class = nytc---modal-window---noScroll
+helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "HTML" );
+
+// remove tag = body, class = nytc---modal-window---noScroll
+helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "BODY" );
