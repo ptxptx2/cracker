@@ -50,6 +50,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
 			            break;
+ 			        case "www.newyorker.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-newyorker.js"} );
+			            break;
  			        case "www.nytimes.com":
  			        case "cooking.nytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
@@ -59,6 +63,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
 			            break;
+				case "www.slate.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							       { file: "clear-slate.js"} );
+ 				    break;
 				case "www.smdailyjournal.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-smjournal.js"} );

@@ -43,6 +43,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
 			            break;
+ 			        case "www.newyorker.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-newyorker.js"} );
+			            break;
  			        case "www.nytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
@@ -66,6 +70,11 @@
  			        case "www.theguardian.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-theguardian.js"} );
+			            break;
+ 			        case "www.theintercept.com":
+ 			        case "theintercept.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-theintercept.js"} );
 			            break;
 				case "www.washingtonpost.com":
 			            chrome.tabs.executeScript( tabs[0].id,

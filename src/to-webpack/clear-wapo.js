@@ -194,7 +194,7 @@ function runEmbedded() {
 
 		twitter_node.innerHTML = adds[i].html;
 
-// <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+// <script oasync="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	    }
 	    oembed_node.appendChild(twitter_node);
 	    div_node.appendChild(oembed_node);
