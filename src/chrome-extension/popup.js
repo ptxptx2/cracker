@@ -63,6 +63,7 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
 			            break;
+				case "slate.com":
 				case "www.slate.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							       { file: "clear-slate.js"} );

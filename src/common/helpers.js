@@ -100,5 +100,24 @@ export function removeClassNameFromFirstElement( className, tagName ) {
     }
 }
 
+export function removeFirstElementByTagNameAndIdPattern( tagName, idRegex ) {
+    if ( tagName == null || idRegex  == null ) {
+	return 0
+    }
+    var d = document.getElementsByTagName(tagName);
+    if ( d.length > 0 ) {
+	var pattern = idRegex;
+	var re = new RegExp(pattern,"gi");	
+	// iterate over elements to filter for tag names
+	for ( var i = 0; i < d.length; i++ ) {
+	    if ( d != null && d.length > 0 ) {
+		if ( d[i].id.match(re) ) {
+		    removeElement(d[i]);
+		    break;
+		}
+	    }
+	}
+    }
+}
 
     

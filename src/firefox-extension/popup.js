@@ -15,6 +15,7 @@
 							   { file: "clear-bostonglobe.js"} );
 			            break;
 				case "markets.businessinsider.com":
+				case "www.businessinsider.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-businessinsider.js"} );
 			            break;
@@ -29,7 +30,8 @@
 			        case "www.foreignpolicy.com":
 			        case "foreignpolicy.com":
 			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-foreignpolicy.js"} );
+							       { file: "clear-foreignpolicy.js"} );
+   				    break;
 			        case "www.fortune.com":
 			        case "fortune.com":
 			            chrome.tabs.executeScript( tabs[0].id,
@@ -48,6 +50,7 @@
 							   { file: "clear-newyorker.js"} );
 			            break;
  			        case "www.nytimes.com":
+ 			        case "cooking.nytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
@@ -55,6 +58,11 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
 			            break;
+				case "slate.com":
+				case "www.slate.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							       { file: "clear-slate.js"} );
+ 				    break;
 				case "www.smdailyjournal.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-smjournal.js"} );
