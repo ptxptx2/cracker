@@ -50,6 +50,7 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
 			            break;
+				// todo
  			        case "www.newyorker.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-newyorker.js"} );
@@ -59,15 +60,28 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
+				// todo
+			        case "www.reuters.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-reuters.js"} );
+			            break;
 				case "www.sandiegouniontribune.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
+			            break;
+				case "www.sfgate.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-sfgate.js"} );
 			            break;
 				case "slate.com":
 				case "www.slate.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							       { file: "clear-slate.js"} );
  				    break;
+				case "www.sltrib.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-sltrib.js"} );
+			            break;
 				case "www.smdailyjournal.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-smjournal.js"} );

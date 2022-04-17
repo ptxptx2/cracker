@@ -11,91 +11,8 @@ var i;
 var j;
 var k;
 
-d = document.getElementsByTagName("IFRAME");
-for ( i = 0; i < d.length; i++ ) {
-    if ( (d[i].src.indexOf( 'subscribe.washingtonpost.com' ) != -1 ) ) {
-	e = d[i].parentElement.parentElement;
-	e.parentNode.removeChild(e);	
-	// do it once
-	break;
-    }
-    if ( (d[i].src.indexOf( 'www.washingtonpost.com/subscribe' ) != -1 ) )  {
-	e = d[i].parentElement;
-	e.parentNode.removeChild(e);	
-	// do it once
-	break;
-   }
-}
+// remove div class=ArticleLimitWall__article-limit-wall-wrapper__KYEhc article-body__limit-wall__3PXu_
 
-// remove subscription side panel
-// search for class="logo"
-// search for <h3>We've noticed you're blocking ads.</h3>
-d = document.getElementsByClassName("logo")
-if ( d != null && d.length != 0 ) {
-    // delete 4 parents up
-    e = d[0].parentNode.parentNode.parentNode.parentNode
-    e.style = "display: hidden";
-}
-    
-// remove paywall
-//g = document.getElementById("paywall-default");
-//if ( g != null ) {
-//    g.parentNode.removeChild(g);	
-//}
-if ( !helpers.removeElementById("paywall-default") ) {
-    if ( !helpers.removeFirstElementByClassName("paywall-overlay") ) {
-	d = document.getElementById("__next");
-	if ( d == null ) {
-	    d = document.getElementById("fusion-app");
-	}    
-	if ( d != null ) {
-	    for ( i = 0; i < g.children.length; i++ ) {
-		e = d.children[i];
-		if ( e.getAttribute("data-qa") != null && e.getAttribute("data-qa").indexOf('paywall') != -1 ) {
-		    e.parentNode.removeChild(e);	
-		    // do it once
-		    break;
-		}
-
-		for ( j = 0; j < e.children.length; j++ ) {
-		    f = e.children[j];
- 		    for ( k = 0; k < f.children.length; k++ ) {
-			g = f.children[k];
-
-			if ( g.getAttribute("id") != null ) {
-			    if (g.id.indexOf('paywall') != -1 ) {
-				g.parentNode.removeChild(g);
-				// do it once
-				break;
-			    }
-			}
-
-		    }
-		}
-		
-	    }
-	}
-    }
-}
-
-
-// html and body - remove position style and overlfow style
-d = document.getElementsByTagName("BODY");
-d[0].style.overflow = "scroll";
-d[0].style.position = "static";
-d[0].parentElement.style.overflow = "scroll";
-
-// remove leaderboard-wrapper
-//g = document.getElementById("leaderboard-wrapper");
-//if ( g != null ) {
-//    g.parentNode.removeChild(g);	
-//}
-
-// remove leaderboard-overlay
-helpers.removeElementById("leaderboard-overlay");
-
-// remove overflow-hidden class div
-helpers.removeFirstElementByAttributeAndClass("data-qa", "leaderboard", "overflow-hidden");
 
 // put back text
 function runEmbedded() {
@@ -117,7 +34,7 @@ function runEmbedded() {
     var i = 1;
     for ( j = 0; j < t.children.length; j++ ) {
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
-	if ( t.children[j].getAttribute("data-qa") != "subscribe-promo" ) {
+	if ( t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
 	    i++;
 	}
     }
