@@ -37,16 +37,8 @@ if ( d != null && d.length > 0 ) {
 
 // v2
 // remove checkout-container
-d = document.getElementById("checkout-container");
-if ( d != null ) {
-    d.parentNode.removeChild(d);
-}
-
-// remove bottom_ribbon_modal_wrapper
-d = document.getElementById("bottom_ribbon_modal_wrapper");
-if ( d != null ) {
-    d.parentNode.removeChild(d);
-}
+helpers.removeElementById("checkout-container");
+helpers.removeElementById("bottom_ribbon_modal_wrapper");
 
 // body to overflow
 d = document.getElementsByTagName("BODY");
@@ -54,3 +46,6 @@ if ( d != null && d.length != 0) {
     d[0].style.overflow = "auto";
 }
 
+// v3
+helpers.removeElementById("bottom_ribbon_modal_expand_wrapper");
+helpers.removeClassNameFromFirstElement( "is-locked", "MAIN" );

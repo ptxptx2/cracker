@@ -48,7 +48,7 @@ if ( !helpers.removeElementById("paywall-default") ) {
 	if ( d == null ) {
 	    d = document.getElementById("fusion-app");
 	}    
-	if ( d != null ) {
+	if ( false ) {
 	    for ( i = 0; i < g.children.length; i++ ) {
 		e = d.children[i];
 		if ( e.getAttribute("data-qa") != null && e.getAttribute("data-qa").indexOf('paywall') != -1 ) {
@@ -78,6 +78,11 @@ if ( !helpers.removeElementById("paywall-default") ) {
     }
 }
 
+// remove div id=wall-bottom-drawer
+// remove div id=regwall-850e745244e
+
+helpers.removeElementById("wall-bottom-drawer");
+helpers.removeElementById("regwall-850e745244e");
 
 // html and body - remove position style and overlfow style
 d = document.getElementsByTagName("BODY");
