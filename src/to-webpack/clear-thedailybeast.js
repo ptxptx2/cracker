@@ -1,4 +1,8 @@
+import * as helpers from '../common/helpers.js';
+
 // v1
+
+var d;
 
 function runEmbedded() {
     // Put here whatever your script needs to do. 

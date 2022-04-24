@@ -14,7 +14,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
           conditions: [new chrome.declarativeContent.PageStateMatcher({
-              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|cooking.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|fortune.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com|markets.businessinsider.com|www.businessinsider.com|www.theintercept.com|theintercept.com|www.newyorker.com|www.slate.com|slate.com|www.reuters.com|www.sltrib.com|www.sfgate.com'},
+              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|cooking.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|fortune.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com|markets.businessinsider.com|www.businessinsider.com|www.theintercept.com|theintercept.com|www.newyorker.com|www.slate.com|slate.com|www.reuters.com|www.sltrib.com|www.sfgate.com|www.sfchronicle.com'},
           })
 		      ],
           actions: [new chrome.declarativeContent.ShowPageAction()]
