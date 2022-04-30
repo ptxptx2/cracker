@@ -1,9 +1,22 @@
-export function removeFirstElementByClassName ( classname ) {
-    if ( classname == null ) {
+export function removeFirstElementByClassName ( classname, parentOffset=0 ) {
+    if ( classname == null || parentOffset < 0) {
 	return 0
     }
     var d = document.getElementsByClassName(classname);
-    return removeFirstElement(d);
+    for ( ; parentOffset > 0; parentOffset-- ) {
+	try {
+	    d[0] = d[0].parentNode;
+	}
+	catch {
+	    break;
+	}
+    }
+    if ( d[0] == null ) {
+	return 0;
+    }
+    else {
+	return removeFirstElement(d);
+    }
 }
 
 export function removeElementsByClassName ( classname ) {

@@ -116,13 +116,15 @@ function runEmbedded() {
     else {
 	adds = __NEXT_DATA__.props.pageProps.globalContent.content_elements;
     }
-    t = document.getElementsByClassName("teaser-content")[0].children[0];
+    //     t = document.getElementsByClassName("teaser-content")[0].children[0];
+        t = document.getElementsByClassName("teaser-content")[0]
 
     // compare what's there (t) and adds - add what's missing
+    // i is initialized to 1 because for some reason adds[0] is always just there
     var i = 1;
     for ( j = 0; j < t.children.length; j++ ) {
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
-	if ( t.children[j].getAttribute("data-qa") != "subscribe-promo" ) {
+	if ( t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
 	    i++;
 	}
     }
@@ -131,7 +133,8 @@ function runEmbedded() {
 	if ( adds[i].type == "text" ) {
             var div_node = document.createElement("DIV");
 	    var text_node = document.createElement("P");
-	    div_node.classList.add( "w-700", "mr-auto-ns", "ml-auto-ns" );
+	    //	    div_node.classList.add( "w-700", "mr-auto-ns", "ml-auto-ns" );
+   	    div_node.classList.add( "article-body", "grid-center", "grid-body" );
 	    text_node.innerHTML = adds[i].content;
 //    	    var the_text = document.createTextNode(adds[i].content);
 //    	    text_node.appendChild(the_text);

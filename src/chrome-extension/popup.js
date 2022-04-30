@@ -50,6 +50,11 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
 			            break;
+				case "www.metro.co.uk":
+				case "metro.co.uk":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-metroco.js"} );
+			            break;
 				// todo
  			        case "www.newyorker.com":
 			            chrome.tabs.executeScript( tabs[0].id,
