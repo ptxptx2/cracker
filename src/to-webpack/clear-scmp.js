@@ -5,7 +5,9 @@ import * as helpers from '../common/helpers.js';
 
 // take articleBody - parse into two sentence bits and put in div
 
-return;
+// exit for now
+
+throw '';
 
 // remove iframe div
 var d;
@@ -271,7 +273,7 @@ embed(runEmbedded);
 
 
 
-
+/*
 
     <script data-vue-meta="true" type="application/ld+json">
 
@@ -346,3 +348,5 @@ But it seems Marcos\u2019 aides could not care less. Rodriguez said his chief\u2
 
 \u201d quotes
 \u2019 apostrophe
+ 
+*/
