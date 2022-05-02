@@ -66,6 +66,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
 			            break;
+				case "www.scmp.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-scmp.js"} );
+			            break;
 				case "www.sfchronicle.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-sfchronicle.js"} );
