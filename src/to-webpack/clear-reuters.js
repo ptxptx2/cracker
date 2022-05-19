@@ -2,8 +2,9 @@ import * as helpers from '../common/helpers.js';
 
 // remove div with class=article-limit-wall__article-limit-wall-wrapper__3FE3N
 
-// remove iframe div
+helpers.removeFirstElementByClassName( "article-limit-wall__article-limit-wall-wrapper__3FE3N" );
 
+// remove iframe div
 // remove div class=ArticleLimitWall__article-limit-wall-wrapper__KYEhc article-body__limit-wall__3PXu_
 
 
@@ -14,7 +15,6 @@ function runEmbedded() {
     var adds;
     var t;
     var i;
-    var j;
 
     if ( window.Fusion.globalContent != null ) {
 	adds = window.Fusion.globalContent.result.content_elements;
@@ -23,8 +23,11 @@ function runEmbedded() {
 
     // assume always first paragraph displayed already
     i = 1;
-    j = 1;
 
+    // save away reporting credit
+    var reporting = t.children[t.children.length-1];
+    t.removeChild( t.children[t.children.length-1] );
+    
     for ( ; i < adds.length; i++ ) {
 	if ( adds[i].type == "paragraph" ) {
 	    var text_node = document.createElement("P");
@@ -33,6 +36,9 @@ function runEmbedded() {
 	    t.appendChild(text_node);
 	}
     }
+
+    // put back reporting credits
+    t.appendChild(reporting);
 
 }
 
