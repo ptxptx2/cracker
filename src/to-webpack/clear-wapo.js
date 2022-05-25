@@ -124,7 +124,7 @@ function runEmbedded() {
     var i = 1;
     for ( j = 0; j < t.children.length; j++ ) {
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
-	if ( t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
+	if ( t.children[j].children[0] && t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
 	    i++;
 	}
     }

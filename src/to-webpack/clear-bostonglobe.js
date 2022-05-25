@@ -1,11 +1,13 @@
-// delete meter-paywall
-d = document.getElementsByClassName("meter-paywall");
-if ( d != null && d.length != 0) {
-    d[0].parentNode.removeChild(d[0]);
-}
+import * as helpers from '../common/helpers.js';
+
+// delete meter-paywall 
+// delete meter-social-connect meter-social-connect--visible
+
+helpers.removeFirstElementByClassName("meter-paywall");
+helpers.removeFirstElementByClassName("meter-social-connect");
 
 // allow scroll
-a = document.getElementsByTagName("BODY");
+var a = document.getElementsByTagName("BODY");
 if ( a != null && a[0] != null) {
     a[0].classList.remove("overflow_x_hidden");
     a[0].style = "";
@@ -27,6 +29,6 @@ function embed(fn) {
     document.documentElement.appendChild(script);
 }
 
-embed(runEmbedded);
+// embed(runEmbedded);
 
 

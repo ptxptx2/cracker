@@ -18,8 +18,10 @@ helpers.removeFirstElementByClassName("ncm-container");
 // delete metering-modal
 helpers.removeFirstElementByTagName("metering-modal");
 
-// the "window..." command does not work directly
+// remove the class subscriber- content
+helpers.removeClassNameFromFirstElement( "subscriber-content", "DIV" );
 
+// the "window..." command does not work directly
 function runEmbedded() {
     // Put here whatever your script needs to do. For example:
     window.trb.registration.utils.page.thaw();
@@ -31,6 +33,7 @@ function embed(fn) {
     document.documentElement.appendChild(script);
 }
 
-embed(runEmbedded);
+// not there anymore - so commenting out
+// embed(runEmbedded);
 
 

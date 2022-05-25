@@ -116,6 +116,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-theintercept.js"} );
 			            break;
+ 			        case "www.vanityfair.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-vanityfair.js"} );
+			            break;
 				case "www.washingtonpost.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-wapo.js"} );
