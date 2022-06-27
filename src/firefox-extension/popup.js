@@ -37,6 +37,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-fortune.js"} );
 			            break;
+				case "www.houstonchronicle.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-sfchronicle.js"} );
+			            break;
 				case "www.latimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-latimes.js"} );
@@ -44,6 +48,11 @@
 				case "www.mediaite.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
+			            break;
+				case "www.messari.io":
+				case "messari.io":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-messari.js"} );
 			            break;
 				case "www.metro.co.uk":
 			            chrome.tabs.executeScript( tabs[0].id,

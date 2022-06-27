@@ -10,6 +10,7 @@ var g;
 var i;
 var j;
 var k;
+var z;
 
 d = document.getElementsByTagName("IFRAME");
 for ( i = 0; i < d.length; i++ ) {
@@ -101,6 +102,17 @@ helpers.removeElementById("leaderboard-overlay");
 
 // remove overflow-hidden class div
 helpers.removeFirstElementByAttributeAndClass("data-qa", "leaderboard", "overflow-hidden");
+
+// add z-3 class to div class=byline-container and div class=story relative
+z = document.getElementsByClassName("byline-container");
+if ( z != null && z.length > 0 ){
+    z[0].classList.add( "z-3");
+}
+z = document.getElementsByClassName("story");
+if ( z != null && z.length > 0 ){
+    z[0].classList.add( "z-3");
+}
+
 
 // put back text
 function runEmbedded() {

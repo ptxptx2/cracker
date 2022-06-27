@@ -42,13 +42,18 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-fortune.js"} );
 			            break;
-				case "www.latimes.com":
+				case "www.houstonchronicle.com":
 			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-latimes.js"} );
+							   { file: "clear-sfchronicle.js"} );
 			            break;
 				case "www.mediaite.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-mediaite.js"} );
+			            break;
+				case "www.messari.io":
+				case "messari.io":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-messari.js"} );
 			            break;
 				case "www.metro.co.uk":
 				case "metro.co.uk":
