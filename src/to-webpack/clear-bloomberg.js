@@ -1,5 +1,10 @@
 import * as helpers from '../common/helpers.js';
 
+// remove reg-ui-client
+
+if ( !helpers.removeElementById("reg-ui-client") ) {
+}    
+
 // remove sign-in-gate
 
 if ( !helpers.removeElementById("fortress-paywall-container-root") ) {
@@ -78,4 +83,5 @@ d[0].appendChild(div_node);
 
 d = document.getElementsByClassName("nearly-transparent-text-blur__84099cbc");
 d[0].classList.remove("nearly-transparent-text-blur__84099cbc");
+
 

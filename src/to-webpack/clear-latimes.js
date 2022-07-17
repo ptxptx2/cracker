@@ -1,11 +1,5 @@
 import * as helpers from '../common/helpers.js';
 
-// overflow to display
-var d = document.getElementsByTagName("BODY");
-if ( d != null && d.length != 0) {
-    d[0].style.overflow = "scroll";
-}
-
 // delete reg-overlay div class
 helpers.removeElementById("reg-overlay");
 
@@ -20,6 +14,18 @@ helpers.removeFirstElementByTagName("metering-modal");
 
 // remove the class subscriber- content
 helpers.removeClassNameFromFirstElement( "subscriber-content", "DIV" );
+
+// remove fc-ab-root
+helpers.removeFirstElementByClassName("fc-ab-root");
+
+// overflow to display
+var d = document.getElementsByTagName("BODY");
+if ( d != null && d.length != 0) {
+    d[0].style.overflow = "scroll";
+}
+
+// delete caaa5c28-fae7-404f-aef1-23687ef8fc11
+helpers.removeElementById("caaa5c28-fae7-404f-aef1-23687ef8fc11");
 
 // the "window..." command does not work directly
 function runEmbedded() {

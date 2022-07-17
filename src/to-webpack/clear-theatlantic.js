@@ -23,3 +23,56 @@ helpers.removeFirstElementByClassName("Paywall_root__ciuNi");
 var d = document.getElementsByTagName("BODY");
 d[0].classList.remove("Gate_withGate__5Ql7N");
 d[0].style.overflow = "scroll";
+
+// remove injected gate
+helpers.removeFirstElementByClassName("c-gate__container");
+
+// 20220717
+//
+
+// remove class InjectedGate_root__2z3Ef and GateToast_root__mzwlN
+helpers.removeFirstElementByClassName("InjectedGate_root__2z3Ef");
+helpers.removeFirstElementByClassName("GateToast_root__mzwlN");
+
+// add content to last p with class ArticleParagraph_root__wy3UI on <section class=ArticleBody_root__nZ4AR>
+function runEmbedded() {
+    // Put here whatever your script needs to do.
+
+    var adds_json = __NEXT_DATA__.props.pageProps.urqlState;
+    var adds;
+    // assumes only 1 of type BlogArticle
+    var keys = Object.keys(adds_json);
+    var i;
+    for ( i = 0; i < keys.length; i++ ) {
+	// console.log( key, JSON.parse(adds_json[key].data) );
+	var j = JSON.parse(adds_json[key].data);
+	if ( j.article != null ) {
+	    if ( j.article.__typename == "BlogArticle" ) {
+		adds = j.article.content;
+		break;
+	    }
+	}
+    }
+    
+    var t = document.getElementsByClassName("ArticleBody_root__nZ4AR");
+
+    var i = 4;
+    for ( ; i < adds.length; i++ ) {
+	if ( adds[i].__typename == "ArticleParagraphContent" ) {
+	    p_node = document.createElement("P");
+	    p_node.classList.add( "ArticleParagraph_root__wy3UI" );
+	    helpers.setInnerHTML( p_node, adds[i].innerHtml );
+	    t.appendChild( p_node );
+	}
+    }
+				
+}
+
+function embed(fn) {
+    const script = document.createElement("script");
+    script.text = `(${fn.toString()})();`;
+    document.documentElement.appendChild(script);
+}
+
+embed(runEmbedded);
+

@@ -157,9 +157,11 @@ function runEmbedded() {
 	else if ( adds[i].type == "raw_html" ) {
             var div_node = document.createElement("DIV");
 	    var html_node = document.createElement("DIV");
-	    html_node.innerHTML = adds[i].content;
+	    helpers.setInnerHTML( html_node, adds[i].content );
+	    // html_node.innerHTML = adds[i].content;
 	    div_node.appendChild(html_node);
 	    t.appendChild(div_node);
+	    
 	}
 	else if ( adds[i].type == "image" ) {
             var div_node = document.createElement("DIV");
