@@ -54,9 +54,11 @@ if ( d != null ) {
     }
 }
 
+
 // db2 is the complete article
 
 // copy to article body 1
+if (false) {
 d = document.getElementsByTagName("div");
 if ( d != null ) {
     for (i=0; i<d.length; i++) {
@@ -70,6 +72,8 @@ if ( d != null ) {
 	}
     }
 }
+}
+
 
 // copy to article body 2
 d = document.getElementsByClassName("body-content");
@@ -85,3 +89,8 @@ d = document.getElementsByClassName("nearly-transparent-text-blur__84099cbc");
 d[0].classList.remove("nearly-transparent-text-blur__84099cbc");
 
 
+// add to <body> style="overflow: scroll"
+d = document.getElementsByTagName("body");
+if ( d != null ) {
+    d[0].style.overflow = "scroll";
+}

@@ -43,9 +43,10 @@ function runEmbedded() {
     // assumes only 1 of type BlogArticle
     var keys = Object.keys(adds_json);
     var i;
+    var j;
     for ( i = 0; i < keys.length; i++ ) {
 	// console.log( key, JSON.parse(adds_json[key].data) );
-	var j = JSON.parse(adds_json[key].data);
+	j = JSON.parse(adds_json[keys[i]].data);
 	if ( j.article != null ) {
 	    if ( j.article.__typename == "BlogArticle" ) {
 		adds = j.article.content;
@@ -61,8 +62,8 @@ function runEmbedded() {
 	if ( adds[i].__typename == "ArticleParagraphContent" ) {
 	    p_node = document.createElement("P");
 	    p_node.classList.add( "ArticleParagraph_root__wy3UI" );
-	    helpers.setInnerHTML( p_node, adds[i].innerHtml );
-	    t.appendChild( p_node );
+	    p_node.innerHTML = adds[i].innerHtml;
+	    t[0].appendChild( p_node );
 	}
     }
 				
