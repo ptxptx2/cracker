@@ -12,6 +12,7 @@ var d;
 
 d = document.getElementsByTagName("BODY");
 d[0].style.overflow = "scroll";
+d[0].style.position = "relative";
 
 d = document.getElementsByTagName("HTML");
 d[0].style.overflow = "scroll";

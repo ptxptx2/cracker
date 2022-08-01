@@ -11,6 +11,10 @@
 			    var url = new URL( tabs[0].url );
 			    console.log( url.hostname );
 			    switch (url.hostname) {
+ 			        case "www.bizjournals.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-bizjournals.js"} );
+			            break;
  			        case "www.bloomberg.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-bloomberg.js"} );

@@ -15,6 +15,7 @@ helpers.removeFirstElementByClassName("ncm-container");
 
 // delete metering-modal
 var r = helpers.removeFirstElementByTagName("metering-modal");
+var r = helpers.removeFirstElementByTagName("modality-custom-element");
 console.log("removed metering-modal - ", r)
 
 // remove the class subscriber- content

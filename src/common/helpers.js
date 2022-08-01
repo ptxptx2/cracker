@@ -107,8 +107,32 @@ export function removeClassNameFromFirstElement( className, tagName ) {
 	    if ( d != null && d.length > 0 ) {
 		if ( d[i].tagName == tagName ) {
 		    d[i].classList.remove(className);
+		    break;
 		}
 	    }
+	}
+    }
+}
+
+export function removeClassNameFromElementById( className, id ) {
+    if ( id == null || className  == null ) {
+	return 0
+    }
+    var d = document.getElementById(id);
+    if ( d != null && d.length > 0 ) {
+	d.classList.remove(className);
+    }
+}
+
+export function removeClassNameFromElementsByClassName( classNameRemove, classNameSearch  ) {
+    if ( classNameRemove == null || classNameSearch  == null ) {
+	return 0
+    }
+    var d = document.getElementsByClassName(classNameSearch);
+    if ( d != null && d.length > 0 ) {
+	// do it from the end of the list
+	for ( var i = d.length-1; i >= 0; i-- ) {
+	    d[i].classList.remove(classNameRemove);
 	}
     }
 }
@@ -143,4 +167,16 @@ export function setInnerHTML( elm, html ) {
     newScript.appendChild(document.createTextNode(oldScript.innerHTML));
     oldScript.parentNode.replaceChild(newScript, oldScript);
   });
+}
+
+export function setStyleByClassName( className, styleProperty, styleSetting ) {
+    if ( className == null || styleProperty  == null || styleSetting  == null ) {
+	return 0
+    }
+    var d = document.getElementsByClassName(className);
+    if ( d != null && d.length > 0 ) {
+	for ( var i = 0; i < d.length; i++ ) {
+	    d[i].style[styleProperty] = styleSetting;
+	}
+    }
 }

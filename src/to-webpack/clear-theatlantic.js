@@ -45,10 +45,10 @@ function runEmbedded() {
     var i;
     var j;
     for ( i = 0; i < keys.length; i++ ) {
-	// console.log( key, JSON.parse(adds_json[key].data) );
+	console.log( keys[i], JSON.parse(adds_json[keys[i]].data) );
 	j = JSON.parse(adds_json[keys[i]].data);
 	if ( j.article != null ) {
-	    if ( j.article.__typename == "BlogArticle" ) {
+	    if ( j.article.content != null ) {
 		adds = j.article.content;
 		break;
 	    }
