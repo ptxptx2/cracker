@@ -48,5 +48,8 @@ function embed(fn) {
 // not there anymore - so commenting out
 // embed(runEmbedded);
 
+// 20220804
+// remove element with class met-sub-link
 
+helpers.removeFirstElementByClassName("met-sub-link");
 
