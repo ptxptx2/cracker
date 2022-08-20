@@ -77,3 +77,7 @@ function embed(fn) {
 
 embed(runEmbedded);
 
+// remove subscription ad
+
+helpers.removeElementsByClassName( "LostInventoryMessage_root__Ue8tC" );
+
