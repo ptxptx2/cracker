@@ -79,8 +79,20 @@ if ( d != null ) {
 d = document.getElementsByClassName("body-content");
 
 var div_node = document.createElement("P");
+div_node.classList.add( "cracker");
 div_node.innerHTML = db2;
 d[0].appendChild(div_node);
+
+// need to set all <P> inside class "cracker" to have bottom margin at 24px
+var p_start = document.getElementsByClassName("cracker");
+if ( p_start != null && p_start[0] != null ) {
+    for ( var i = 0; i < p_start[0].childNodes.length; i++) {
+	if ( p_start[0].childNodes[i].tagName == "P" ) {
+	    p_start[0].childNodes[i].style.margin = "24px 0";
+	}
+    }
+}
+
 
 
 // remove blur - by removing class "nearly-transparent-text-blur__84099cbc"

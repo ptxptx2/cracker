@@ -11,16 +11,18 @@ helpers.removeFirstElementByClassName("css-gx5sib");
 
 // allow scroll
 var a = document.getElementsByClassName("css-mcm29f");
-if ( a != null && a[0] != null) {
+if ( a != null && a[0] != null ) {
     a[0].style.overflow = "scroll";
     // remove black stripe
     a = document.getElementsByClassName("css-1bd8bfl");
-    a[0].style.visiblity = "hidden";
-    a[0].style.display = "none";
+    if ( a != null && a[0] != null ) {
+	a[0].style.visiblity = "hidden";
+	a[0].style.display = "none";
+    }
 }
 
 
-    // set site-content to position:static
+// set site-content to position:static
 var d = document.getElementById("site-content");
 if ( d != null ) {
     d.style.position = 'static';
