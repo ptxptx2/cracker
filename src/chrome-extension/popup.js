@@ -112,6 +112,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-smjournal.js"} );
 			            break;
+				case "www.star-telegram.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-startelegram.js"} );
+			            break;
  			        case "www.theatlantic.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-theatlantic.js"} );
