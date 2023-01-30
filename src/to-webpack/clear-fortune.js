@@ -20,3 +20,6 @@ if ( d != null && d.length != 0 ) {
 
 // article_overlay2 - remove style
 // article_overlay - remove style
+
+// remove paywall-active class
+helpers.removeClassNameFromElementsByClassName( "paywallActive", "paywall" );
