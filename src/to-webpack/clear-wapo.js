@@ -130,18 +130,36 @@ function runEmbedded() {
 	adds = __NEXT_DATA__.props.pageProps.globalContent.content_elements;
     }
     //     t = document.getElementsByClassName("teaser-content")[0].children[0];
-        t = document.getElementsByClassName("teaser-content")[0]
+    //     t = document.getElementsByClassName("teaser-content")[0]
+    
+    // adjusted to find other article-body
+    t = document.getElementsByClassName("grid-body")[0]
 
     // compare what's there (t) and adds - add what's missing
     // i is initialized to 1 because for some reason adds[0] is always just there
     var i = 1;
-    for ( j = 0; j < t.children.length; j++ ) {
+
+    // get teaser-content, then go through article-body there
+    u = t.children[1];
+    for ( j = 0; j < u.children.length; j++ ) {
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
-	if ( t.children[j].children[0] && t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
+	if ( u.children[j].children[0] && u.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
 	    i++;
 	}
     }
-
+    
+    // go through other article body that's not in teaser-content - find matching adds content
+    // start at t.children[3]; t.children[2] is an empty div
+    for ( j = 3; j < t.children.length; j++ ) {
+	// if not article-body, skip
+	// if t.children[j]."data-qa" != 'subscribe-promo' then count
+	if ( t.children[j] && t.children[j].getAttribute("data-qa") == "article-body" ) {
+	    if ( t.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
+		i++;
+	    }
+	}
+    }
+    
     for ( ; i < adds.length; i++ ) {
 	if ( adds[i].type == "text" ) {
             var div_node = document.createElement("DIV");
