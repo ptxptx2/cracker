@@ -121,7 +121,7 @@ function runEmbedded() {
 
     var adds;
     var t;
-    var i;
+    var u;
 
     if ( window.Fusion.globalContent != null ) {
 	adds = window.Fusion.globalContent.content_elements;
@@ -133,11 +133,23 @@ function runEmbedded() {
     //     t = document.getElementsByClassName("teaser-content")[0]
     
     // adjusted to find other article-body
-    t = document.getElementsByClassName("grid-body")[0]
+    // t = document.getElementsByClassName("grid-body")[0]
+    // some articles have multiple grid-body class so not reliable; grid-article is 0 or 1;
+    // so t should just be one up from teaser content
+    t = document.getElementsByClassName("teaser-content")[0].parentNode;
 
     // compare what's there (t) and adds - add what's missing
-    // i is initialized to 1 because for some reason adds[0] is always just there
-    var i = 1;
+
+    // i is initialized to where the first adds element that has "content"
+    var i = 0;
+    for ( ; i < adds.length; i++ ) {
+	if ( adds[i].content != null ) {
+	    break;
+	}
+    }	
+
+    var append_pt;
+    var i_orig;
 
     // get teaser-content, then go through article-body there
     u = t.children[1];
@@ -147,9 +159,11 @@ function runEmbedded() {
 	    i++;
 	}
     }
+    append_pt = u;
     
     // go through other article body that's not in teaser-content - find matching adds content
     // start at t.children[3]; t.children[2] is an empty div
+    i_orig = i;
     for ( j = 3; j < t.children.length; j++ ) {
 	// if not article-body, skip
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
@@ -159,9 +173,17 @@ function runEmbedded() {
 	    }
 	}
     }
-    
+    // if there are any article-body found
+    if ( i_orig != i ) {
+	append_pt = t;
+    }
+    // how about end of article-body vs some other elements - need to insert !!
+    // currently only works if 0 article-body outside of teaser-content OR all content is there in article-body
+
     for ( ; i < adds.length; i++ ) {
+	// console.log("here");
 	if ( adds[i].type == "text" ) {
+	// console.log("here-text");
             var div_node = document.createElement("DIV");
 	    var text_node = document.createElement("P");
 	    //	    div_node.classList.add( "w-700", "mr-auto-ns", "ml-auto-ns" );
@@ -171,18 +193,26 @@ function runEmbedded() {
 //    	    text_node.appendChild(the_text);
 	    text_node.classList.add( "font--body", "font-copy",  "color-gray-darkest", "ma-0", "pb-md" );
 	    div_node.appendChild(text_node);
-	    t.appendChild(div_node);
+	    append_pt.appendChild(div_node);
 	}
 	else if ( adds[i].type == "raw_html" ) {
+	// console.log("here-raw_html");
             var div_node = document.createElement("DIV");
 	    var html_node = document.createElement("DIV");
-	    helpers.setInnerHTML( html_node, adds[i].content );
+	    html_node.innerHTML = adds[i].content;
+	    Array.from(html_node.querySelectorAll("script")).forEach( oldScript => {
+		const newScript = document.createElement("script");
+		Array.from(oldScript.attributes).forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+		newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+		oldScript.parentNode.replaceChild(newScript, oldScript);
+	    })
 	    // html_node.innerHTML = adds[i].content;
 	    div_node.appendChild(html_node);
-	    t.appendChild(div_node);
+	    append_pt.appendChild(div_node);
 	    
 	}
 	else if ( adds[i].type == "image" ) {
+	// console.log("here-image");
             var div_node = document.createElement("DIV");
             var fig_node = document.createElement("FIGURE");
 	    var img_node = document.createElement("IMG");
@@ -206,12 +236,13 @@ function runEmbedded() {
 	    }
             fig_node.appendChild(fig_caption_node);
             div_node.appendChild(fig_node);
-            t.appendChild(div_node);
+            append_pt.appendChild(div_node);
 	}
 //	else if ( adds[i].type == "video" ) {
 //	    
 //	}
 	else if ( adds[i].type == "header" ) {
+	// console.log("here-header");
             var div_node = document.createElement("DIV");
 	    var text_node = document.createElement("H3");
 	    text_node.innerHTML = adds[i].content;
@@ -219,9 +250,10 @@ function runEmbedded() {
 //    	    text_node.appendChild(the_text);
 	    text_node.classList.add( "font--body", "font-copy",  "color-gray-darkest", "ma-0", "pad-bottom-md",  "undefined" );
 	    div_node.appendChild(text_node);
-	    t.appendChild(div_node);
+	    append_pt.appendChild(div_node);
 	}
 	else if ( adds[i].type == "oembed_response-prev" ) {
+	// console.log("here-oembed-rp");
 	    var div_node = document.createElement("DIV");
 	    var oembed_node = document.createElement("DIV");
 	    if ( adds[i].subtype == "twitter" ) {
@@ -239,10 +271,10 @@ function runEmbedded() {
 	    }
 	    oembed_node.appendChild(twitter_node);
 	    div_node.appendChild(oembed_node);
-	    t.appendChild(div_node);
+	    append_pt.appendChild(div_node);
 	}
 	else if ( adds[i].type == "oembed_response" ) {
-	    
+	// console.log("here-oembed-response");	    
 	    // "<blockquote class="twitter-tweet">
 	    //		<p lang="en" dir="ltr"> Tesla stock price is too high imo</p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1256239815256797184?ref_src=twsrc%5Etfw">May 1, 2020</a>
 	    // </blockquote>
@@ -252,7 +284,7 @@ function runEmbedded() {
 	    var bq_node = document.createElement("DIV");
 	    bq_node.innerHTML = adds[i].raw_oembed.html + "<BR><BR>"
     
-	    t.appendChild(bq_node);
+	    append_pt.appendChild(bq_node);
 	    try {
 		window.twttr.widgets.load( bq_node );
 	    }
@@ -262,6 +294,7 @@ function runEmbedded() {
 	}
 		
 	else if ( adds[i].type == "oembed_response-new" ) {
+	// console.log("here-oembed-rp_new");	    
 	    
 	    // <div className="mw-99 flex justify-center mb-sm">
                 // <AmpOembed rawOembed={rawOembed} subtype={subtype} />
@@ -275,12 +308,10 @@ function runEmbedded() {
 	    amp_node.setAttributeNS( ".", "subtype", adds[i].subtype );
 	    bq_node.appendChild(amp_node);
 
-	    t.appendChild(bq_node);
-
-	    
+	    append_pt.appendChild(bq_node);
 	    
 	}
-
+	// console.log("exit for loop");
     }
 	
     var oUrl = document.querySelector("meta[property='og:url']").getAttribute("content");
