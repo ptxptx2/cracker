@@ -5,7 +5,7 @@ import * as helpers from '../common/helpers.js';
 // remove 2nd jss62
 
 let x = document.getElementsByClassName("Messari-paywall");
-if ( x != null ) {
+if ( x != null && x.length > 0 ) {
     let x = document.getElementsByClassName("MuiPaper-root");
 }
 if ( x != null ) {
@@ -15,6 +15,7 @@ if ( x != null ) {
 }
 
 helpers.removeClassNameFromFirstElement("Messari-paywall", "DIV");
+helpers.removeClassNameFromFirstElement("css-11wbc2a", "DIV");
 helpers.removeClassNameFromFirstElement("MuiPaper-root", "DIV");
 helpers.removeClassNameFromFirstElement("jss57", "DIV");
 helpers.removeClassNameFromFirstElement("jss62", "DIV");

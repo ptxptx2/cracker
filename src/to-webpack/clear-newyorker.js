@@ -49,10 +49,11 @@ function runEmbedded() {
 	    }
 	    break;
 	case "p":
+	    var div_node = document.createElement("DIV");
 	    var text = "";
 	    var text_node = document.createElement("P");
 	    var classes = xArray[1]["class"].split(' ');
-	    if ( classes.length > 1 ) {
+	    if ( classes.length > 0 ) {
 		for ( var j = 0; j < classes.length; j++ ) {
 		    text_node.classList.add( classes[j] );
 		}
@@ -66,7 +67,10 @@ function runEmbedded() {
 		    text_node.innerHTML = text_node.innerHTML.concat(xArray[i]);
 		}
 	    }
-	    t.appendChild(text_node);
+	    div_node.appendChild(text_node);
+	    t.appendChild(div_node);
+	    console.log(div_node);
+	    console.log(t)
 	    break;
 	case "ad":
 	default:

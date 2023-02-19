@@ -78,6 +78,12 @@ if ( d != null ) {
 // copy to article body 2
 d = document.getElementsByClassName("body-content");
 
+// get rid of existing children there before putting in all of db2
+
+for ( var i=d[0].children.length; i > 0; i-- ) {
+    d[0].removeChild(d[0].children[i-1]);
+}
+
 var div_node = document.createElement("P");
 div_node.classList.add( "cracker");
 div_node.innerHTML = db2;

@@ -53,3 +53,6 @@ helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "HTML"
 
 // remove tag = body, class = nytc---modal-window---noScroll
 helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "BODY" );
+
+// remove expanded message window
+helpers.removeClassNameFromFirstElement("expanded", "DIV");

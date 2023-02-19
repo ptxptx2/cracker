@@ -68,6 +68,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-metroco.js"} );
 			            break;
+ 			        case "www.nationalgeographic.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-nationalgeographic.js"} );
+			            break;
 				// todo
  			        case "www.newyorker.com":
 			            chrome.tabs.executeScript( tabs[0].id,
