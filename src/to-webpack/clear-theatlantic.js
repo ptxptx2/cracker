@@ -31,6 +31,7 @@ helpers.removeFirstElementByClassName("c-gate__container");
 //
 
 // remove class InjectedGate_root__2z3Ef and GateToast_root__mzwlN
+helpers.removeFirstElementByClassName("ArticleInjector_clsAvoider__pXehw");
 helpers.removeFirstElementByClassName("InjectedGate_root__2z3Ef");
 helpers.removeFirstElementByClassName("GateToast_root__mzwlN");
 
@@ -57,7 +58,17 @@ function runEmbedded() {
     
     var t = document.getElementsByClassName("ArticleBody_root__nZ4AR");
 
-    var i = 4;
+    // set i to start of adds to append
+    // -- set i to count t[0].children until no more ArticleParagraph_root__wy3UI or ArticleRelatedContentModule_root__BBa6g
+    // var i = 4;
+    var i = 0;
+    for ( j = 0 ; i < adds.length && j < t[0].children.length; j++ ) {
+	if ( adds[i].__typename == "ArticleParagraphContent" || adds[i].__typename == "ArticleRelatedContentModule" ) {
+	    if ( t[0].children[j].className.includes("ArticleParagraph_root__wy3UI") || t[0].children[j].className.includes("ArticleRelatedContentModule_root__BBa6g") )
+		i++;
+	}
+    }
+    
     for ( ; i < adds.length; i++ ) {
 	if ( adds[i].__typename == "ArticleParagraphContent" ) {
 	    p_node = document.createElement("P");
