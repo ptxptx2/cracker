@@ -23,3 +23,6 @@ if ( d != null && d.length != 0 ) {
 
 // remove paywall-active class
 helpers.removeClassNameFromElementsByClassName( "paywallActive", "paywall" );
+
+// remove paywallFade class
+helpers.removeClassNameFromElementsByClassName( "paywallFade", "paywall-selector" );

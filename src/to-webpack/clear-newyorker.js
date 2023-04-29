@@ -9,6 +9,9 @@ helpers.removeFirstElementByClassName("journey-unit");
 helpers.removeClassNameFromFirstElement("paywall","DIV");
 helpers.removeClassNameFromFirstElement("paywall","DIV");
 
+helpers.removeFirstElementByClassName("journey-template--paywall-bar");
+
+
 function runEmbedded() {
     // Put here whatever your script needs to do.
 
@@ -69,8 +72,8 @@ function runEmbedded() {
 	    }
 	    div_node.appendChild(text_node);
 	    t.appendChild(div_node);
-	    console.log(div_node);
-	    console.log(t)
+	    // console.log(div_node);
+	    // console.log(t)
 	    break;
 	case "ad":
 	default:
