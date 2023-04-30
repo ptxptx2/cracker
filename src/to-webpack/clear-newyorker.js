@@ -34,12 +34,13 @@ function runEmbedded() {
 	}
     }
 
-    var clen = 20;  // compare length
+    var dlen = 20;  // compare length
     var k;
     for ( k=0 ; k < s.length; k++ ) {
 	if ( Array.isArray(s[k]) && s[k][0] == "P" ) {
 	    // compare t.children[append_pt].textContent to
-	    if  ( t.children[append_pt].textContent.substring(0,clen) == s[k][2].substring(0,clen) ) {
+	    var clen = Math.min( dlen, s[k][2].length, t.children[append_pt].textContent.length );
+	    if  ( t.children[append_pt].textContent.substr(0,clen) == s[k][2].substr(0,clen) ) {
 		// set to start at the next one
 		k = k + 1;
 		break;
