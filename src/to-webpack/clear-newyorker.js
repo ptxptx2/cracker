@@ -21,8 +21,32 @@ function runEmbedded() {
     var s = window.__PRELOADED_STATE__.transformed.article.body;
     var t = document.getElementsByClassName("body__inner-container")[0];
 
-    // skip 0-2; start at 3
-    for ( var i=3; i < s.length; i++ ) {
+    // instead of "skip 0-2; start at 3"
+    // for ( var i=3; i < s.length; i++ ) {
+
+    // find the s to start appending to t; set to k
+    // find last t child that has element P
+    var append_pt;
+    for ( var i=t.children.length-1; i<0; i-- ) {
+	if ( t.children[i].nodeName == "P" ) {
+	    append_pt = i;
+	    break;
+	}
+    }
+
+    var clen = 20;  // compare length
+    var k;
+    for ( k=0 ; k < s.length; k++ ) {
+	if ( Array.isArray(s[k]) && s[k][0] == "P" ) {
+	    // compare t.children[append_pt].textContent to
+	    if  ( t.children[append_pt].textContent.substring(0,clen) == s[k][2].substring(0,clen) ) {
+		// set to start at the next one
+		k = k + 1;
+		break;
+	    }
+	}
+    }
+    for ( var i=k; i < s.length; i++ ) {
 	doArray( s[i], t );
     }
 

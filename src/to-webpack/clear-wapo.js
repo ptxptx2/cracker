@@ -151,15 +151,37 @@ function runEmbedded() {
     var append_pt;
     var i_orig;
 
-    // get teaser-content, then go through article-body there
-    u = t.children[1];
+    // get teaser-content, then go through article-body there and offset adds
+    var k;
+    for ( k = 0; k < t.children.length; k++ ) {
+	for ( var l = 0; l < t.children[k].classList.length; l++ ) {
+	    if ( t.children[k].classList[l] == "teaser-content" ) {
+		// k is it
+		break;
+	    }
+	}
+	if ( l < t.children[k].classList.length ) {
+	    break;
+	}
+    }
+    if ( k < t.children.length ) {
+	u = t.children[k];
+    } else {
+	// no teaser-content
+	u = t.children[1];
+    }
+    // at this point, u should be teaser-content
+
     for ( j = 0; j < u.children.length; j++ ) {
 	// if t.children[j]."data-qa" != 'subscribe-promo' then count
 	if ( u.children[j].children[0] && u.children[j].children[0].getAttribute("data-qa") != "subscribe-promo" ) {
 	    i++;
 	}
     }
-    append_pt = u;
+
+    // if no subscribe-promo....
+    
+    append_pt = u.children[j-1];
     
     // go through other article body that's not in teaser-content - find matching adds content
     // start at t.children[3]; t.children[2] is an empty div
@@ -267,7 +289,7 @@ function runEmbedded() {
 
 		twitter_node.innerHTML = adds[i].html;
 
-// <script oasync="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		// <script oasync="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	    }
 	    oembed_node.appendChild(twitter_node);
 	    div_node.appendChild(oembed_node);
