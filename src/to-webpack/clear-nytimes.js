@@ -72,7 +72,7 @@ function runEmbedded() {
     // adjusted to find other article-body
     // some articles have multiple grid-body class so not reliable; grid-article is 0 or 1;
     // so t should just be one up from teaser content
-    t = document.getElementsByClassName("css-53u6y8")[0];
+    t = document.getElementsByClassName("css-53u6y8");
 
     // compare what's there (t) and adds - add what's missing
 
@@ -84,62 +84,68 @@ function runEmbedded() {
 //	}
 //    }	
 
-    var append_pt;
+    var append_pt = null;
 
     // figure out where to append it
     
-    append_pt = t;
-    
     // go through other article text to be added
 
-    // skip first 2 entries where adds[i].__typename = "ParagraphBlock"
-    //var paragraph_cnt = 0;
-    //for ( ; i < adds.length; i++ ) {
-//	if ( adds[i].__typename == "ParagraphBlock" ) {
-//	    paragraph_cnt++;
-//	    if ( paragraph_cnt == 2 ) {
-//		break;
-//	    }
-//	}
-//    }
-
-    // add any adds[i].__typename = "ParagraphBlock"
-    // progress to first ParagraphBlock
-//    for ( ; i < adds.length; i++ ) {
-//	if ( adds[i].__typename == "ParagraphBlock" ) {
-//	    break;
-//	}
-//    }
-    
     // compare text to see where in adds to start appending
     var dlen = 20;
-    for ( var j = 0; j < t.children.length; j++ ) {
-	if ( t.children[j].nodeName == "P" ) {
-	    // find first possible ParagraphBlock to add
-	    for ( ; i < adds.length; i++ ) {
-		if ( adds[i].__typename == "ParagraphBlock" ) {
+    var escape = 0;
+    var j, k;
+    for ( k = 0; k < t.length; k++ ) {
+	for ( j = 0; j < t[k].children.length; j++ ) {
+	    // keep going until there's no more evys1bk0 class (first one that's not)
+	    if ( t[k].children[j].nodeName == "P" ) {
+		if ( !t[k].children[j].className.includes("evys1bk0") ) {
+		    append_pt = t[k].children[j-1];
+		    escape = 1;
 		    break;
 		}
-	    }
-	    // compare ParagraphBlock to t.children[j].text
-	    var clen = Math.min( dlen, adds[i].content[0].text.length, t.children[j].textContent.length );
-	    if ( adds[i].content[0].text.substr(0,clen) == t.children[j].textContent.substr(0,clen) ) {
-		// skip if already there
-		i++;
-	    }
-	    else {
-		break;
-		// assume start adding at i - possibly not have gone through all of t.children
+		// find first possible ParagraphBlock to add
+		for ( ; i < adds.length; i++ ) {
+		    if ( adds[i].__typename == "ParagraphBlock" ) {
+			break;
+		    }
+		}
+		// compare ParagraphBlock to t.children[j].text
+		var clen = Math.min( dlen, adds[i].content[0].text.length, t[k].children[j].textContent.length );
+		if ( adds[i].content[0].text.substr(0,clen) == t[k].children[j].textContent.substr(0,clen) ) {
+		    // skip if already there
+		    i++;
+		}
+		else {
+		    escape = 1;
+		    break;
+		    // assume start adding at i - possibly not have gone through all of t.children
+		}
 	    }
 	}
+	console.log( k, j );
+	if ( escape == 1 ) {
+	    console.log( 'escape');
+	    break;
+	}
+    }
+
+    // set append_pt if it's at the end of t.children
+    if ( append_pt == null ) {
+	append_pt = t[k-1].children[j-1];
     }
     
     // does not deal with adds[x].content[y].format?
-    
+
+    // add extra line if not escaped
     for ( ; i < adds.length; i++ ) {
-	// console.log("here");
 	if ( adds[i].__typename == "ParagraphBlock" ) {
-	// console.log("here-text");
+	    // put extra spacing
+	    if ( !escape ) {
+		var text_node = document.createElement("P");
+		text_node.classList.add( "css-at9mc1" );
+		append_pt.appendChild(text_node);
+		escape = 1;
+	    }
 	    var text_node = document.createElement("P");
 	    for ( var j = 0; j < adds[i].content.length; j++ ) {
 		
