@@ -1,14 +1,10 @@
 import * as helpers from '../common/helpers.js';
 
-console.log("in clear-latimes.js 1");
-
 // delete reg-overlay div class
 helpers.removeElementById("reg-overlay");
 
 // delete fc-ab-root
 helpers.removeFirstElementByClassName("fc-ab-root");
-
-console.log("in clear-latimes.js 2");
 
 // delete ncm-container div class
 helpers.removeFirstElementByClassName("ncm-container");
@@ -16,7 +12,6 @@ helpers.removeFirstElementByClassName("ncm-container");
 // delete metering-modal
 var r = helpers.removeFirstElementByTagName("metering-modal");
 var r = helpers.removeFirstElementByTagName("modality-custom-element");
-console.log("removed metering-modal - ", r)
 
 // remove the class subscriber- content
 helpers.removeClassNameFromFirstElement( "subscriber-content", "DIV" );

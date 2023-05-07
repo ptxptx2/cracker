@@ -72,7 +72,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nationalgeographic.js"} );
 			            break;
-				// todo
+				case "www.nbcnews.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-nbcnews.js"} );
+			            break;
  			        case "www.newyorker.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-newyorker.js"} );
@@ -82,7 +85,6 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
-				// todo
 			        case "www.reuters.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-reuters.js"} );
