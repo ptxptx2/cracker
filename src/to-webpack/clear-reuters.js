@@ -7,6 +7,11 @@ helpers.removeFirstElementByClassName( "article-limit-wall__article-limit-wall-w
 // remove iframe div
 // remove div class=ArticleLimitWall__article-limit-wall-wrapper__KYEhc article-body__limit-wall__3PXu_
 
+// remove div with class article-wall__paywall__1PkA6
+helpers.removeFirstElementByClassName( "article-wall__paywall__1PkA6");
+
+// remove class regular-article-layout__restricted__2wpi5 (2x)
+helpers.removeClassNameFromElementsByClassName( "regular-article-layout__restricted__2wpi5", "regular-article-layout__restricted__2wpi5");
 
 // put back text
 function runEmbedded() {
