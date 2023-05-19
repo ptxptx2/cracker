@@ -97,7 +97,7 @@
 			            break;
 				case "www.sfgate.com":
 			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-sfgateb.js"} );
+							   { file: "clear-sfgate.js"} );
 			            break;
 				case "slate.com":
 				case "www.slate.com":
