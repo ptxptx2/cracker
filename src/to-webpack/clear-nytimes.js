@@ -61,11 +61,11 @@ helpers.removeClassNameFromFirstElement("expanded", "DIV");
 function runEmbedded() {
     // Put here whatever your script needs to do.
 
-    var adds;
+    var adds = [];
     var t;
     var u;
 
-    if ( window.__preloadedData.initialData.data.article.sprinkledBody.content != null ) {
+    if ( window.__preloadedData.initialData != null && window.__preloadedData.initialData.data.article.sprinkledBody.content != null ) {
 	adds = window.__preloadedData.initialData.data.article.sprinkledBody.content;
     }
     
@@ -130,7 +130,7 @@ function runEmbedded() {
     }
 
     // set append_pt if it's at the end of t.children
-    if ( append_pt == null ) {
+    if ( append_pt == null && t.length > 0 ) {
 	append_pt = t[k-1].children[j-1];
     }
     
