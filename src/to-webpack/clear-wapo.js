@@ -85,6 +85,7 @@ if ( !helpers.removeElementById("paywall-default") ) {
 helpers.removeElementById("wall-bottom-drawer");
 helpers.removeElementById("regwall-850e745244e");
 helpers.removeElementById("regwall-85097be91e4");
+helpers.removeElementById("regwall-121815f1efea");
 
 // html and body - remove position style and overlfow style
 d = document.getElementsByTagName("BODY");
