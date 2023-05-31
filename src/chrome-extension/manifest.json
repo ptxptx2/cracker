@@ -2,29 +2,39 @@
     "name": "cracker2",
     "version": "1.2.0",
     "description": "cracker2",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "background": {
-	"page": "background.html",
-	"persistent": true
+	"service_worker": "background.js"
     },
     "content_scripts": [
 	{
 	    "matches": ["https://www.washingtonpost.com/*"],
 	    "run_at": "document_end",
 	    "js": ["content-wapo.js"]
+//	},
+//	{
+//	    "matches": ["https://*/*"],
+//	    "run_at": "document_end",
+//	    "js": ["master-clear-cs.js"]
 	}
     ],
-    "page_action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "images/get_started16.png",
-        "32": "images/get_started32.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
-      }
+    "action": {
+	"default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
+	},
+	"default_title": "Cracker",
+	"default_popup": "popup.html"
     },
-    "permissions": ["activeTab", "declarativeContent", "storage", "tabs",
-		    "webRequest", "webRequestBlocking", 
+    "permissions": ["activeTab", "declarativeContent",
+		    "scripting", "storage", "tabs",
+		    "webRequest"
+// ,
+//		    "webRequestBlocking"
+            ],
+    "host_permissions": [
             "*://www.washingtonpost.com/*", "*://subscribe.washingtonpost.com/*",
             "*://cdn.optimizely.com/*", "*://cdn3.optimizely.com/*",
             "*://errors.client.optimizely.com/*", 
@@ -36,6 +46,16 @@
       "32": "images/get_started32.png",
       "48": "images/get_started48.png",
       "128": "images/get_started128.png"
-    }
+    },
+    "web_accessible_resources": [
+	{
+	    "resources": [
+		"master-switch.js"
+	    ],
+	    "matches": [
+		"*://*/*"
+	    ]
+	}
+    ]    
 }
 

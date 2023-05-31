@@ -4,27 +4,29 @@
 
 'use strict';
 
-// import { removeElementById } from './helpers.js';
-// import { removeFirstElementByClassName } from './helpers.js';
+let url_match = 'www.smdailyjournal.com|www.nytimes.com|cooking.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|fortune.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com|markets.businessinsider.com|www.businessinsider.com|www.theintercept.com|theintercept.com|www.newyorker.com|www.slate.com|slate.com|www.reuters.com|www.sltrib.com|www.sfgate.com|www.sfchronicle.com|www.metro.co.uk|metro.co.uk|www.scmp.com|www.vanityfair.com|www.houstonchronicle.com|www.messari.io|messari.io|bizjournals.com|www.bizjournals.com|www.star-telegram.com|www.nationalgeographic.com|www.nbcnews.com';
 
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log("The color is green.");
-  });
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-      chrome.declarativeContent.onPageChanged.addRules([{
-          conditions: [new chrome.declarativeContent.PageStateMatcher({
-              pageUrl: {urlMatches: 'www.smdailyjournal.com|www.nytimes.com|cooking.nytimes.com|www.latimes.com|www.chicagotribune.com|www.thedailybeast.com|www.washingtonpost.com|www.sandiegouniontribune.com|theatlantic.com|foreignpolicy.com|fortune.com|theguardian.com|mediaite.com|bloomberg.com|www.forbes.com|www.eastbaytimes.com|www.bostonglobe.com|markets.businessinsider.com|www.businessinsider.com|www.theintercept.com|theintercept.com|www.newyorker.com|www.slate.com|slate.com|www.reuters.com|www.sltrib.com|www.sfgate.com|www.sfchronicle.com|www.metro.co.uk|metro.co.uk|www.scmp.com|www.vanityfair.com|www.houstonchronicle.com|www.messari.io|messari.io|bizjournals.com|www.bizjournals.com|www.star-telegram.com|www.nationalgeographic.com|www.nbcnews.com'},
-          })
-		      ],
-          actions: [new chrome.declarativeContent.ShowPageAction()]
-      }]);
-  });
+    chrome.storage.sync.set({color: '#3aa757'}, function() {
+      console.log("The color is green.");
+    });
+
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+	chrome.declarativeContent.onPageChanged.addRules([{
+            conditions: [new chrome.declarativeContent.PageStateMatcher({
+		pageUrl: {urlMatches: url_match}
+            })
+			],
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+	}]);
+    });
 });
+
+// importScripts("master-switch.js");
 
 // block certain urls for wapo
 
-chrome.webRequest.onBeforeRequest.addListener(
+/* chrome.webRequest.onBeforeRequest.addListener(
         function(details) {
 	    return {cancel: (details.url.indexOf("9af97774e9.js") != -1)
 		        || (details.url.indexOf("head.min.js") != -1)
@@ -53,3 +55,12 @@ chrome.webRequest.onBeforeRequest.addListener(
               ]},
         ["blocking"]
 );
+*/
+//
+
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ["content-script.js"]
+  });
+});

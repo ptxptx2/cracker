@@ -57,6 +57,8 @@ helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "BODY"
 // remove expanded message window
 helpers.removeClassNameFromFirstElement("expanded", "DIV");
 
+console.log(window.__preloadedData);
+
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
@@ -165,5 +167,8 @@ function embed(fn) {
     document.documentElement.appendChild(script);
 }
 
-embed(runEmbedded);
+// embed(runEmbedded);
+runEmbedded();
+
+
 
