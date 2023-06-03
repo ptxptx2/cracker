@@ -90,7 +90,7 @@ helpers.removeElementById("regwall-121815f1efea");
 // html and body - remove position style and overlfow style
 d = document.getElementsByTagName("BODY");
 d[0].style.overflow = "scroll";
-d[0].style.position = "static";
+d[0].style.position = "relative";
 d[0].parentElement.style.overflow = "scroll";
 
 // remove leaderboard-wrapper
