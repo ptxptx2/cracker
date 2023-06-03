@@ -1,11 +1,11 @@
-  let changeColor = document.getElementById('changeColor');
+  let cracker = document.getElementById('cracker');
 
   chrome.storage.sync.get('color', function(data) {
-    changeColor.style.backgroundColor = data.color;
-    changeColor.setAttribute('value', data.color);
+    cracker.style.backgroundColor = data.color;
+    cracker.setAttribute('value', data.color);
   });
 
-  changeColor.onclick = function(element) {
+  cracker.onclick = function(element) {
       chrome.tabs.query({active: true, currentWindow: true},
 			function(tabs) {
 			    var url = new URL( tabs[0].url );

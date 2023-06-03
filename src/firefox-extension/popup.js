@@ -1,6 +1,6 @@
-  let changeColor = document.getElementById('changeColor');
+  let cracker = document.getElementById('cracker');
 
-  changeColor.onclick = function(element) {
+  cracker.onclick = function(element) {
       chrome.tabs.query({active: true, currentWindow: true},
 			function(tabs) {
 			    var url = new URL( tabs[0].url );
