@@ -92,3 +92,7 @@ embed(runEmbedded);
 
 helpers.removeElementsByClassName( "LostInventoryMessage_root__Ue8tC" );
 
+// remove allow ads
+
+helpers.removeElementsByClassName( "fc-dialog-overlay");
+helpers.removeElementsByClassName( "fc-dialog-container");
