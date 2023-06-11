@@ -103,8 +103,9 @@ if ( p_start != null && p_start[0] != null ) {
 
 // remove blur - by removing class "nearly-transparent-text-blur__84099cbc"
 
-d = document.getElementsByClassName("nearly-transparent-text-blur__84099cbc");
-d[0].classList.remove("nearly-transparent-text-blur__84099cbc");
+//d = document.getElementsByClassName("nearly-transparent-text-blur__84099cbc");
+//d[0].classList.remove("nearly-transparent-text-blur__84099cbc");
+helpers.removeClassNameFromElementsByClassName( "nearly-transparent-text-blur__84099cbc", "nearly-transparent-text-blur__84099cbc" );
 
 
 // add to <body> style="overflow: scroll"
@@ -112,3 +113,19 @@ d = document.getElementsByTagName("body");
 if ( d != null ) {
     d[0].style.overflow = "scroll";
 }
+
+// find img and load higher resolution version
+d = document.getElementsByClassName("lazy-img__image");
+if ( d != null ) {
+    var newsrc;
+    for ( var i = 0; i < d.length; i++ ) {
+	if ( d[i].src.includes("60x-1") ) {
+	    newsrc = d[i].src.replace("60x-1", "640x-1");
+	} else {
+	    newsrc = d[i].src.replace("150x-1", "640x-1");
+	}
+	d[i].src = newsrc;
+    }
+}
+
+helpers.removeClassNameFromElementsByClassName( "lazy-img__image", "lazy-img__image");
