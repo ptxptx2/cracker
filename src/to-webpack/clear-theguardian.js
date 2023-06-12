@@ -54,5 +54,5 @@ if ( d != null && d.length > 0 ) {
 
 
 // add removal of banner
-if ( !helpers.removeElementsByClassName("dcr-1hebmgj") ) {
-}    
+helpers.removeElementsByClassName("dcr-1hebmgj");
+helpers.removeElementsByClassName("dcr-1d5d3o3");
