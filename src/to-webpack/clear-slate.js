@@ -9,3 +9,9 @@ helpers.removeClassNameFromFirstElement( "slate-roadblock", "ASIDE");
 helpers.removeClassNameFromFirstElement( "slate-roadblock--in-article", "ASIDE");
 
 
+// 20230615
+helpers.removeClassNameFromFirstElement( "tp-scroll-prevented", "HTML");
+helpers.removeClassNameFromFirstElement( "tp-modal-open", "BODY");
+helpers.removeClassNameFromFirstElement( "tp-body-scroll-prevented", "BODY");
+helpers.removeFirstElementByClassName("tp-modal");
+helpers.removeFirstElementByClassName("tp-active");
