@@ -41,7 +41,7 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-fortune.js"} );
 			            break;
-			        case "foxbusiness.com":
+			        case "www.foxbusiness.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-foxbusiness.js"} );
 			            break;
