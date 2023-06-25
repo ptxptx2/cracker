@@ -83,6 +83,9 @@ function determine_script(host) {
     case "fortune.com":
 	return( "clear-fortune.js" );
 	break;
+    case "www.foxbusiness.com":
+	return( "clear-foxbusiness.js" );
+	break;
     case "www.houstonchronicle.com":
 	return( "clear-sfchronicle.js" );
 	break;
