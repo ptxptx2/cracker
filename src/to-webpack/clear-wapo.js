@@ -115,6 +115,9 @@ if ( z != null && z.length > 0 ){
     z[0].classList.add( "z-3");
 }
 
+// 20230628 
+helpers.removeFirstElementByClassName("regwall-overlay");
+
 
 // put back text
 function runEmbedded() {
