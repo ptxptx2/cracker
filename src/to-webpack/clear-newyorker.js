@@ -18,40 +18,76 @@ function runEmbedded() {
     // append text to div with class = body__inner-container
     // from window.__PRELOADED_STATE__.transformed.article.body
 
+    console.log('inside embedded');
     var s = window.__PRELOADED_STATE__.transformed.article.body;
-    var t = document.getElementsByClassName("body__inner-container")[0];
-
+    // var t = document.getElementsByClassName("body__inner-container")[0];
+    var t = document.getElementsByClassName("article__body")[0];
+    
     // instead of "skip 0-2; start at 3"
     // for ( var i=3; i < s.length; i++ ) {
 
     // find the s to start appending to t; set to k
     // find last t child that has element P
-    var append_pt;
-    for ( var i=t.children.length-1; i<0; i-- ) {
+    var append_pt = 0;
+    for ( var i=t.children[0].children.length-1; i<0; i-- ) {
 	if ( t.children[i].nodeName == "P" ) {
 	    append_pt = i;
 	    break;
 	}
     }
 
+    // k is where to start copying from; find where to start appending
     var dlen = 20;  // compare length
     var k;
     for ( k=0 ; k < s.length; k++ ) {
-	if ( Array.isArray(s[k]) && s[k][0] == "P" ) {
-	    // compare t.children[append_pt].textContent to
-	    var clen = Math.min( dlen, s[k][2].length, t.children[append_pt].textContent.length );
-	    if  ( t.children[append_pt].textContent.substr(0,clen) == s[k][2].substr(0,clen) ) {
-		// set to start at the next one
-		k = k + 1;
-		break;
+	// find P array to compare
+	// console.log('k - ', k);
+	if ( Array.isArray(s[k]) ) {
+	    if (s[k][0].toUpperCase() == 'P' ) {
+		if ( compareP( s[k], t.children[0].children[append_pt] ) ) {
+		    // set to start at the next one
+		    k = k + 1;
+		    break;
+		}
+	    }
+	    // not P at the start, go one level deeper
+	    else {
+		var foundP = 0;
+		for ( j=0; j < s[k].length; j++ ) {
+		    if ( Array.isArray(s[k][j]) && s[k][j][0].toUpperCase() == 'P' ) {
+			if ( compareP( s[k][j], t.children[0].children[append_pt] ) ) {
+			    // set to start at the next one
+			    foundP = 1;
+			    break;
+			}
+		    }
+		}
+		if ( foundP == 1 ) {
+		    k = k + 1;
+		    break;
+		}
 	    }
 	}
     }
+
+    // do additions
     for ( var i=k; i < s.length; i++ ) {
+	// console.log( 'additions: - ', i );
 	doArray( s[i], t );
     }
 
-    function doArray( xArray, t ) {
+    // s[k], t.children[append_pt]
+    function compareP( pArray, tNode ) {
+	var clen = Math.min( dlen, pArray[2].length, tNode.textContent.length );
+	if  ( tNode.textContent.substr(0,clen) == pArray[2].substr(0,clen) ) {
+	    return true;
+	}
+	else {
+	    return false;
+	}
+    }
+    
+    function doArray( xArray, tDisp ) {
 	// look at [0] to determine what to do
 	switch( xArray[0] ) {
 	case "inline-embed":
@@ -60,7 +96,7 @@ function runEmbedded() {
 	    switch( xArray[1]['type'] ) {
 	    case "image":
 		// alert( xArray[1] );
-		insertImage( xArray[1], t );
+		insertImage( xArray[1], tDisp );
 		break;
 	    // ignore
 	    case "callout:dropcap":
@@ -70,13 +106,14 @@ function runEmbedded() {
 	    default:
 		for ( var i = 2; i < xArray.length; i++ ) {
 		    if ( Array.isArray(xArray[i]) ) {
-			doArray(xArray[i], t);
+			doArray(xArray[i], tDisp);
 		    }
 		}
 		break;
 	    }
 	    break;
 	case "p":
+	    console.log( "in p");
 	    var div_node = document.createElement("DIV");
 	    var text = "";
 	    var text_node = document.createElement("P");
@@ -96,9 +133,10 @@ function runEmbedded() {
 		}
 	    }
 	    div_node.appendChild(text_node);
-	    t.appendChild(div_node);
-	    // console.log(div_node);
-	    // console.log(t)
+	    tDisp.appendChild(div_node);
+	    console.log(div_node);
+	    console.log(tDisp.children);
+	    console.log(tDisp);
 	    break;
 	case "ad":
 	default:
