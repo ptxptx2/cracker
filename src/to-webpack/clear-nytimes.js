@@ -37,11 +37,11 @@ if ( d != null ) {
 
 // using Array.prototype.filter, to filter the elements returned by
 // 'document.querySelectorAll()'
-var nl = document.querySelectorAll('[id*=newsletter]');
-var i;
-for ( i=0; i<nl.length; i++ ) {
-    nl[i].parentNode.removeChild(nl[i]);
-};
+// var nl = document.querySelectorAll('[id*=newsletter]');
+// var i;
+// for ( i=0; i<nl.length; i++ ) {
+//     nl[i].parentNode.removeChild(nl[i]);
+// };
 
 // for cooking.nytimes.com
 
