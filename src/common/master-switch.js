@@ -69,6 +69,9 @@ function determine_script(host) {
     case "www.businessinsider.com":
 	return( "clear-businessinsider.js" );
 	break;
+    case "www.chicagotribune.com":
+	return( "clear-chicagotribune.js" );
+	break;
     case "www.eastbaytimes.com":
 	return( "clear-eastbaytimes.js" );
 	break;
