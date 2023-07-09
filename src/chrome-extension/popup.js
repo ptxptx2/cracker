@@ -28,6 +28,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-businessinsider.js"} );
 			            break;
+				case "www.chicagotribune.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-chicagotribune.js"} );
+			            break;
 				case "www.eastbaytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-eastbaytimes.js"} );
