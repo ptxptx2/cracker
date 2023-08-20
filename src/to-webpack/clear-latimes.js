@@ -28,6 +28,9 @@ if ( d != null && d.length != 0) {
     d[0].style.overflow = "scroll";
 }
 
+// get rid of hidden class
+helpers.removeClassNameFromFirstElement( "hidden", "DIV" );
+
 // the "window..." command does not work directly
 function runEmbedded() {
     // Put here whatever your script needs to do. For example:

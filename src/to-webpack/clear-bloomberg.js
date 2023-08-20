@@ -80,14 +80,16 @@ d = document.getElementsByClassName("body-content");
 
 // get rid of existing children there before putting in all of db2
 
-for ( var i=d[0].children.length; i > 0; i-- ) {
-    d[0].removeChild(d[0].children[i-1]);
-}
+if (d.length > 0) {
+    for ( var i=d[0].children.length; i > 0; i-- ) {
+	d[0].removeChild(d[0].children[i-1]);
+    }
 
-var div_node = document.createElement("P");
-div_node.classList.add( "cracker");
-div_node.innerHTML = db2;
-d[0].appendChild(div_node);
+    var div_node = document.createElement("P");
+    div_node.classList.add( "cracker");
+    div_node.innerHTML = db2;
+    d[0].appendChild(div_node);
+}
 
 // need to set all <P> inside class "cracker" to have bottom margin at 24px
 var p_start = document.getElementsByClassName("cracker");
@@ -129,3 +131,5 @@ if ( d != null ) {
 }
 
 helpers.removeClassNameFromElementsByClassName( "lazy-img__image", "lazy-img__image");
+
+helpers.removeClassNameFromElementsByClassName( "styles_articleBlur__iScBf", "styles_articleBlur__iScBf" );
