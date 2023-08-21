@@ -28,7 +28,7 @@ function runEmbedded() {
 
     // assume always first paragraph displayed already
     i = 1;
-
+    
     // save away reporting credit
     var reporting = t.children[t.children.length-1];
     t.removeChild( t.children[t.children.length-1] );
@@ -57,4 +57,8 @@ function embed(fn) {
 embed(runEmbedded);
 
 
+
+helpers.removeFirstElementByClassName( " fEy1Z2XT  " );
+helpers.setStyleByTagName('HTML','overflow','scroll');
+helpers.setStyleByTagName('BODY','overflow','scroll');
 
