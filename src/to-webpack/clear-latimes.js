@@ -30,6 +30,7 @@ if ( d != null && d.length != 0) {
 
 // get rid of hidden class
 helpers.removeClassNameFromFirstElement( "hidden", "DIV" );
+helpers.removeClassNameFromFirstElement( "subscriber-content", "DIV" );
 
 // the "window..." command does not work directly
 function runEmbedded() {
