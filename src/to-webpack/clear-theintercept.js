@@ -11,4 +11,5 @@ helpers.removeClassNameFromFirstElement( "Post-body--truncated", "DIV" );
 // remove all div with class = "ThirdPartySlot"
 helpers.removeElementsByClassName("ThirdPartySlot");
 
-
+// remove class meter-expired
+helpers.removeClassNameFromFirstElement( "meter-expired", "DIV" );
