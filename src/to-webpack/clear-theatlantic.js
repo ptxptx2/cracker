@@ -33,7 +33,10 @@ helpers.removeFirstElementByClassName("c-gate__container");
 // remove class InjectedGate_root__2z3Ef and GateToast_root__mzwlN
 helpers.removeFirstElementByClassName("ArticleInjector_clsAvoider__pXehw");
 helpers.removeFirstElementByClassName("InjectedGate_root__2z3Ef");
+helpers.removeFirstElementByClassName("InjectedGate_root__HL0m9");
 helpers.removeFirstElementByClassName("GateToast_root__mzwlN");
+helpers.removeFirstElementByClassName("GateToast_root__xdcuI");
+
 
 // add content to last p with class ArticleParagraph_root__wy3UI on <section class=ArticleBody_root__nZ4AR>
 function runEmbedded() {
@@ -41,10 +44,10 @@ function runEmbedded() {
 
     var adds_json = __NEXT_DATA__.props.pageProps.urqlState;
     var adds;
-    // assumes only 1 of type BlogArticle
     var keys = Object.keys(adds_json);
     var i;
     var j;
+    // find the one with article.content
     for ( i = 0; i < keys.length; i++ ) {
 	console.log( keys[i], JSON.parse(adds_json[keys[i]].data) );
 	j = JSON.parse(adds_json[keys[i]].data);
@@ -56,15 +59,27 @@ function runEmbedded() {
 	}
     }
     
-    var t = document.getElementsByClassName("ArticleBody_root__nZ4AR");
-
+    var possibleClassNames = [ "ArticleBody_root__nZ4AR", "ArticleBody_root__2gF81" ];
+    var t;
+    for ( k = 0; k < possibleClassNames.length; k++ ) {
+	t = document.getElementsByClassName(possibleClassNames[k]);
+	if ( t.length > 0 ) {
+	    break;
+	}
+    }
+    
+    
     // set i to start of adds to append
     // -- set i to count t[0].children until no more ArticleParagraph_root__wy3UI or ArticleRelatedContentModule_root__BBa6g
     // var i = 4;
     var i = 0;
     for ( j = 0 ; i < adds.length && j < t[0].children.length; j++ ) {
 	if ( adds[i].__typename == "ArticleParagraphContent" || adds[i].__typename == "ArticleRelatedContentModule" ) {
-	    if ( t[0].children[j].className.includes("ArticleParagraph_root__wy3UI") || t[0].children[j].className.includes("ArticleRelatedContentModule_root__BBa6g") )
+	    if (
+		t[0].children[j].className.includes("ArticleParagraph_root__wy3UI") ||
+		t[0].children[j].className.includes("ArticleRelatedContentModule_root__BBa6g") ||
+		t[0].children[j].className.includes("ArticleParagraph_root__4mszW")
+	       )
 		i++;
 	}
     }
@@ -73,6 +88,7 @@ function runEmbedded() {
 	if ( adds[i].__typename == "ArticleParagraphContent" ) {
 	    p_node = document.createElement("P");
 	    p_node.classList.add( "ArticleParagraph_root__wy3UI" );
+	    p_node.classList.add( "ArticleParagraph_root__4mszW" );
 	    p_node.innerHTML = adds[i].innerHtml;
 	    t[0].appendChild( p_node );
 	}
