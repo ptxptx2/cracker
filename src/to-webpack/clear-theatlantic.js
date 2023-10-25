@@ -32,21 +32,34 @@ helpers.removeFirstElementByClassName("c-gate__container");
 
 // remove class InjectedGate_root__2z3Ef and GateToast_root__mzwlN
 helpers.removeFirstElementByClassName("ArticleInjector_clsAvoider__pXehw");
-helpers.removeFirstElementByClassName("InjectedGate_root__2z3Ef");
-helpers.removeFirstElementByClassName("InjectedGate_root__HL0m9");
-helpers.removeFirstElementByClassName("GateToast_root__mzwlN");
-helpers.removeFirstElementByClassName("GateToast_root__xdcuI");
+// helpers.removeFirstElementByClassName("GateToast_root__mzwlN");
+// helpers.removeFirstElementByClassName("GateToast_root__xdcuI");
+
+// 20231024 update
+
+helpers.removeFirstElementByClassName("LostInventoryMessage_root__YllYq");
+
+var k = document.querySelector("div[class^='InjectedBoldGate_root']");
+if ( k != null ) {
+    helpers.removeElement(k);
+}
+var k = document.querySelector("div[class^='GateToast_root']");
+if ( k != null ) {
+    helpers.removeElement(k);
+}
 
 
 // add content to last p with class ArticleParagraph_root__wy3UI on <section class=ArticleBody_root__nZ4AR>
 function runEmbedded() {
     // Put here whatever your script needs to do.
 
+    // get the text to be added
     var adds_json = __NEXT_DATA__.props.pageProps.urqlState;
     var adds;
     var keys = Object.keys(adds_json);
     var i;
     var j;
+
     // find the one with article.content
     for ( i = 0; i < keys.length; i++ ) {
 	console.log( keys[i], JSON.parse(adds_json[keys[i]].data) );
@@ -59,6 +72,7 @@ function runEmbedded() {
 	}
     }
     
+    // find where to add
     var possibleClassNames = [ "ArticleBody_root__nZ4AR", "ArticleBody_root__2gF81" ];
     var t;
     for ( k = 0; k < possibleClassNames.length; k++ ) {
