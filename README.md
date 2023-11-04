@@ -27,3 +27,6 @@ after checkout
 to build - into dist
 
 -- grunt
+
+
+nvm use 16

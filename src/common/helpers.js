@@ -192,3 +192,15 @@ export function setStyleByTagName( tagName, styleProperty, styleSetting ) {
 	}
     }
 }
+
+export function setStyleAttributeByTagName( tagName, styleProperty, styleSetting ) {
+    if ( tagName == null || styleProperty  == null || styleSetting  == null ) {
+	return 0
+    }
+    var d = document.getElementsByTagName(tagName);
+    if ( d != null && d.length > 0 ) {
+	for ( var i = 0; i < d.length; i++ ) {
+	    d[i].setAttribute("style", styleProperty + ": " + styleSetting + ";" );
+	}
+    }
+}

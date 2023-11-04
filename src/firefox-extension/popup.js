@@ -86,6 +86,11 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-newyorker.js"} );
 			            break;
+ 			        case "www.nymag.com":
+ 			        case "nymag.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-nymag.js"} );
+			            break;
  			        case "www.nytimes.com":
  			        case "cooking.nytimes.com":
 			            chrome.tabs.executeScript( tabs[0].id,
