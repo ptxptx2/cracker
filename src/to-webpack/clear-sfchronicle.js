@@ -8,6 +8,10 @@ import * as helpers from '../common/helpers.js';
 helpers.removeClassNameFromFirstElement( 'fancybox-overlay', 'DIV' );
 helpers.removeClassNameFromFirstElement( 'fancybox-lock', 'HTML' );
 
+// remove modals
+
+helpers.removeElementById( 'modals' );
+
 var d;
 
 d = document.getElementsByTagName("BODY");

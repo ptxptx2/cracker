@@ -43,7 +43,11 @@ var k = document.querySelector("div[class^='InjectedBoldGate_root']");
 if ( k != null ) {
     helpers.removeElement(k);
 }
-var k = document.querySelector("div[class^='GateToast_root']");
+var k = document.querySelector("div[class^='InjectedGate_root']");
+if ( k != null ) {
+    helpers.removeElement(k);
+}
+var k = document.querySelector("aside[class^='GateToast_root']");
 if ( k != null ) {
     helpers.removeElement(k);
 }
