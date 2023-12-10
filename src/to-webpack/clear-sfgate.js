@@ -12,4 +12,4 @@ d[0].style.overflow = "scroll";
 d = document.getElementsByTagName("HTML");
 d[0].style.overflow = "scroll";
 
-helpers.removeFirstElementByClassName('modals');
+helpers.removeElementById('modals');
