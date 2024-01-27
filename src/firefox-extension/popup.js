@@ -31,6 +31,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-chicagotribune.js"} );
 			            break;
+				case "www.cnbc.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-cnbc.js"} );
+			            break;
    			        case "www.dailymail.co.uk":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-dailymail.js"} );

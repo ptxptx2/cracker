@@ -83,10 +83,11 @@ if ( !helpers.removeElementById("paywall-default") ) {
 // remove div id=regwall-850e745244e
 
 helpers.removeElementById("wall-bottom-drawer");
-helpers.removeElementById("regwall-850e745244e");
-helpers.removeElementById("regwall-85097be91e4");
-helpers.removeElementById("regwall-121815f1efea");
-helpers.removeElementById("regwall-12184b2c0c17-e9c20b88");
+// helpers.removeElementById("regwall-850e745244e");
+// helpers.removeElementById("regwall-85097be91e4");
+// helpers.removeElementById("regwall-121815f1efea");
+// helpers.removeElementById("regwall-12184b2c0c17-e9c20b88");
+helpers.removeFirstElementByTagNameAndIdPattern( "DIV", "regwall-" );
 
 // html and body - remove position style and overlfow style
 d = document.getElementsByTagName("BODY");

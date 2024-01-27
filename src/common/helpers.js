@@ -137,6 +137,29 @@ export function removeClassNameFromElementsByClassName( classNameRemove, classNa
     }
 }
 
+export function removeClassNameFromElementsByClassNamePattern( className, classNameRemoveRegex ) {
+    if ( classNameRemoveRegex == null || className  == null ) {
+	return 0
+    }
+    var d = document.getElementsByClassName(className);
+    if ( d.length > 0 ) {
+	var pattern = classNameRemoveRegex;
+	var re = new RegExp(pattern,"gi");	
+	// iterate over elements to filter for class names
+	for ( var i = 0; i < d.length; i++ ) {
+	    if ( d[i] != null ) {
+		// iterate over className of element
+		for ( var j = 0; j < d[i].classList.length; j++ ) {
+		    if ( d[i].classList[j].match(re) ) {
+			d[i].classList.remove(d[i].classList[j]);
+			break;
+		    }
+		}
+	    }
+	}
+    }
+}
+
 export function removeFirstElementByTagNameAndIdPattern( tagName, idRegex ) {
     if ( tagName == null || idRegex  == null ) {
 	return 0
