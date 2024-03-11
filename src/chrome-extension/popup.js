@@ -110,6 +110,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-nytimes.js"} );
 			            break;
+			        case "www.rappler.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-rappler.js"} );
+			            break;
 			        case "www.reuters.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-reuters.js"} );

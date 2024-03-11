@@ -138,14 +138,14 @@ function runEmbedded() {
 
     // add extra line if not escaped
     for ( ; i < adds.length; i++ ) {
+	// put extra spacing
+	if ( !escape ) {
+	    var text_node = document.createElement("P");
+	    text_node.classList.add( "css-at9mc1" );
+	    append_pt.appendChild(text_node);
+	    escape = 1;
+	}
 	if ( adds[i].__typename == "ParagraphBlock" ) {
-	    // put extra spacing
-	    if ( !escape ) {
-		var text_node = document.createElement("P");
-		text_node.classList.add( "css-at9mc1" );
-		append_pt.appendChild(text_node);
-		escape = 1;
-	    }
 	    var text_node = document.createElement("P");
 	    for ( var j = 0; j < adds[i].content.length; j++ ) {
 		
@@ -153,6 +153,11 @@ function runEmbedded() {
 	    }
    	    text_node.classList.add( "css-at9mc1", "evys1bk0" );
 	    append_pt.appendChild(text_node);
+	}
+	else {
+	    if ( adds[i].__typename == "ImageBlock" ) {
+		
+	    }
 	}
     }
 	
