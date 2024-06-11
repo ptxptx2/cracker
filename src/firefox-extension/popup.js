@@ -61,6 +61,10 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-foxbusiness.js"} );
 			            break;
+				case "www.haaretz.com":
+			            chrome.tabs.executeScript( tabs[0].id,
+							   { file: "clear-haaretz.js"} );
+			            break;
 				case "www.houstonchronicle.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-sfchronicle.js"} );
