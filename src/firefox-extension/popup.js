@@ -125,6 +125,7 @@
 							   { file: "clear-scmp.js"} );
 			            break;
 				case "www.seekingalpha.com":
+				case "seekingalpha.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-seekingalpha.js"} );
 			            break;
