@@ -137,6 +137,7 @@ if ( d != null ) {
 // helpers.removeClassNameFromElementsByClassName( "lazy-img__image", "lazy-img__image");
 
 helpers.removeClassNameFromElementsByClassNamePattern( "body-content", "styles_articleBlur_" );
+helpers.removeClassNameFromElementsByClassNamePattern( "styles_body__G_0n2", "styles_articleBlur_" );
 
 // put back text
 function runEmbedded() {

@@ -34,3 +34,12 @@ helpers.removeFirstElementByClassName( "dialog-base" );
 
 // scroll - body - class = js-dialog-open
 helpers.removeClassNameFromFirstElement( "js-dialog-open", "BODY" );
+
+// 20241127
+
+helpers.removeFirstElementByClassName( "pw-modal-entry" );
+helpers.removeFirstElementByClassName( "pw-modal-backdrop" );
+helpers.removeClassNameFromFirstElement( "pw-modal-open", "BODY" );
+
+// have to load content
+// businessinsider - survivor period

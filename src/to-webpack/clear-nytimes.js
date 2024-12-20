@@ -57,6 +57,9 @@ helpers.removeClassNameFromFirstElement("nytc---modal-window---noScroll", "BODY"
 // remove expanded message window
 helpers.removeClassNameFromFirstElement("expanded", "DIV");
 
+// remove advertisement
+helpers.removeFirstElementByClassName("leaderboard-wrapper");
+
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
@@ -92,7 +95,7 @@ function runEmbedded() {
 
     // compare text to see where in adds to start appending
     var dlen = 20;
-    var escape = 0;
+    var escape = 1;
     var j, k;
     for ( k = 0; k < t.length; k++ ) {
 	for ( j = 0; j < t[k].children.length; j++ ) {

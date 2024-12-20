@@ -56,3 +56,6 @@ if ( d != null && d.length > 0 ) {
 // add removal of banner
 helpers.removeElementsByClassName("dcr-1hebmgj");
 helpers.removeElementsByClassName("dcr-1d5d3o3");
+
+helpers.removeElementsByClassName("dcr-wc4h92");
+

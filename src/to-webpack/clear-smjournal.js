@@ -33,11 +33,15 @@ helpers.removeClassNameFromElementsByClassName( "hide", "hide" );
 
 // do not show subscription-required
 var a = document.getElementsByClassName("subscription-required");
-a[0].style.display = "none";
+if ( a.length > 0 ) {
+    a[0].style.display = "none";
+}
 
 // do not show redacted-overlay
 var a = document.getElementsByClassName("redacted-overlay");
-a[0].style.display = "none";
+if ( a.length > 0 ) {
+    a[0].style.display = "none";
+}
 
 // remove sticky-anchor
 // var d = document.getElementById("sticky-anchor");
