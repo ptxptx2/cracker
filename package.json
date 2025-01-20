@@ -10,7 +10,7 @@
     "url": "git+https://github.com/perci/cracker.git"
   },
   "dependencies": {
-    "grunt": "^1.5.3"
+    "grunt": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

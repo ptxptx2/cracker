@@ -1,22 +1,26 @@
+# install node 16
+
+nvm install 16
+nvm use 16
+npm install -g grunt-cli
+
 # cracker
+
+## clone
+
+git clone <GIT URL>
+
+# cracker
+
+cd cracker
+npm install
 
 * to build chrome extension
 
-cd ~/perci/cracker
-mkdir -p target/chrome-extension
-cp ../../common/* .
-cp ../../chrome-extension/* .
-cd target/chrome-extension
-find . | zip -@ cracker-chrome.zip
+cd cracker/src
+grunt
 
-* to build firefox extension
-
-cd ~/perci/cracker
-mkdir -p target/firefox-extension
-cp ../../common/* .
-cp ../../firefox-extension/* .
-cd target/firefox-extension
-find . | zip -@ cracker-firefox.zip
+extension will be in dist
 
 ####
 
