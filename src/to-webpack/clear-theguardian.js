@@ -58,4 +58,5 @@ helpers.removeElementsByClassName("dcr-1hebmgj");
 helpers.removeElementsByClassName("dcr-1d5d3o3");
 
 helpers.removeElementsByClassName("dcr-wc4h92");
+helpers.removeElementById( "sp_message_container_1257129");
 
