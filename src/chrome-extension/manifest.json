@@ -1,30 +1,45 @@
 {
     "name": "cracker2",
-    "version": "1.1.4",
+    "version": "1.3.0",
     "description": "cracker2",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "background": {
-	"page": "background.html",
-	"persistent": true
+	"service_worker": "background.js",
+	"type": "module"
     },
     "content_scripts": [
 	{
-	    "matches": ["https://www.washingtonpost.com/*"],
-	    "run_at": "document_end",
-	    "js": ["content-wapo.js"]
+	    "matches": ["<all_urls>"],
+	    "js": ["embed2.js"]
 	}
     ],
-    "page_action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "images/get_started16.png",
-        "32": "images/get_started32.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
+    "web_accessible_resources": [
+	{
+	    "matches": ["https://nytimes.com/*", "https://*.nytimes.com/*"],
+	    "resources": ["clear-nytimes.js"]
+	},
+	{
+	    "matches": ["https://barrons.com/*", "https://*.barrons.com/*"],
+	    "resources": ["clear-barrons.js"]
+	},
+	{
+	    "matches": ["https://*/*"],
+	    "resources": ["*js"]
+	}
+    ],
+    "action": {
+	"default_popup": "popup.html",
+	"default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
       }
     },
-    "permissions": ["activeTab", "declarativeContent", "storage", "tabs",
-		    "webRequest", "webRequestBlocking", 
+    "permissions": ["activeTab", "declarativeContent", "storage", "tabs", "scripting",
+		    "webRequest"
+            ],
+    "optional_host_permissions": [
             "*://www.washingtonpost.com/*", "*://subscribe.washingtonpost.com/*",
             "*://cdn.optimizely.com/*", "*://cdn3.optimizely.com/*",
             "*://errors.client.optimizely.com/*", 
@@ -38,4 +53,27 @@
       "128": "images/get_started128.png"
     }
 }
+
+
+/*
+  
+//
+executeScript
+
+webrequestblocking
+background.js
+
+content scripts
+    "content_scripts": [
+	{
+	    "matches": ["https://www.washingtonpost.com/*"],
+	    "run_at": "document_end",
+	    "js": ["content-wapo.js"]
+	}
+	],
+
+	optional host permissions
+	permissions whittle down
+
+*/
 

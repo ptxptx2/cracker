@@ -1,199 +1,215 @@
-  let cracker = document.getElementById('cracker');
+function execScript( tab, content_script ) {
+    chrome.scripting.executeScript({
+	target: { tabId: tab },
+	files: [ content_script ]
+    });
+}
+
+let cracker = document.getElementById('cracker');
 
   chrome.storage.sync.get('color', function(data) {
     cracker.style.backgroundColor = data.color;
     cracker.setAttribute('value', data.color);
   });
 
-  cracker.onclick = function(element) {
-      chrome.tabs.query({active: true, currentWindow: true},
-			function(tabs) {
-			    var url = new URL( tabs[0].url );
-			    console.log( url.hostname );
-			    switch (url.hostname) {
- 			        case "www.barrons.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-barrons.js"} );
-			            break;
- 			        case "www.bizjournals.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-bizjournals.js"} );
-			            break;
- 			        case "www.bloomberg.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-bloomberg.js"} );
-			            break;
-				case "www.bostonglobe.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-bostonglobe.js"} );
-			            break;
-				case "markets.businessinsider.com":
-				case "www.businessinsider.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-businessinsider.js"} );
-			            break;
-				case "www.chicagotribune.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-chicagotribune.js"} );
-			            break;
-				case "www.cnbc.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-cnbc.js"} );
-			            break;
-   			        case "www.dailymail.co.uk":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-dailymail.js"} );
-			            break;
-				case "www.eastbaytimes.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-eastbaytimes.js"} );
-			            break;
-			        case "www.forbes.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-forbes.js"} );
-			            break;
-			        case "www.foreignpolicy.com":
-			        case "foreignpolicy.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-foreignpolicy.js"} );
-			            break;
-			        case "www.fortune.com":
-			        case "fortune.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-fortune.js"} );
-			            break;
-			        case "www.foxbusiness.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-foxbusiness.js"} );
-			            break;
-				case "www.haaretz.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-haaretz.js"} );
-			            break;
-				case "www.houstonchronicle.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-sfchronicle.js"} );
-			            break;
-				case "www.latimes.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-latimes.js"} );
-			            break;
-				case "www.mediaite.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-mediaite.js"} );
-			            break;
-				case "www.messari.io":
-				case "messari.io":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-messari.js"} );
-			            break;
-				case "www.metro.co.uk":
-				case "metro.co.uk":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-metroco.js"} );
-			            break;
- 			        case "www.nationalgeographic.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-nationalgeographic.js"} );
-			            break;
-				case "www.nbcnews.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-nbcnews.js"} );
-			            break;
- 			        case "www.newyorker.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-newyorker.js"} );
-			            break;
- 			        case "www.nymag.com":
- 			        case "nymag.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-nymag.js"} );
-			            break;
- 			        case "www.nytimes.com":
- 			        case "cooking.nytimes.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-nytimes.js"} );
-			            break;
-			        case "www.rappler.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-rappler.js"} );
-			            break;
-			        case "www.reuters.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-reuters.js"} );
-			            break;
-				case "www.sandiegouniontribune.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-latimes.js"} );
-			            break;
-				case "www.scmp.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-scmp.js"} );
-			            break;
-				case "www.seekingalpha.com":
-				case "seekingalpha.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-seekingalpha.js"} );
-			            break;
-				case "www.sfchronicle.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-sfchronicle.js"} );
-			            break;
-				case "www.sfgate.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-sfgate.js"} );
-			            break;
-				case "slate.com":
-				case "www.slate.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							       { file: "clear-slate.js"} );
- 				    break;
-				case "www.sltrib.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-sltrib.js"} );
-			            break;
-				case "www.smdailyjournal.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-smjournal.js"} );
-			            break;
-				case "www.star-telegram.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-startelegram.js"} );
-			            break;
- 			        case "www.theatlantic.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-theatlantic.js"} );
-			            break;
- 			        case "www.thedailybeast.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-thedailybeast.js"} );
-			            break;
- 			        case "www.theguardian.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-theguardian.js"} );
-			            break;
- 			        case "www.theintercept.com":
- 			        case "theintercept.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-theintercept.js"} );
-			            break;
- 			        case "www.vanityfair.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-vanityfair.js"} );
-			            break;
-				case "www.washingtonpost.com":
-			            chrome.tabs.executeScript( tabs[0].id,
-							   { file: "clear-wapo.js"} );
-			            break;
-			        default:
-				    console.log( "unrecognized : ", tabs[0].url );
-			    }
-			    this.close();
-                     });
-  };
+      cracker.onclick = function(element) {
+
+	  console.log("cracker.onclick");
+	  let queryOptions = { active: true, lastFocusedWindow: true };
+	  chrome.tabs.query(queryOptions, ([tab]) => {
+	      if (chrome.runtime.lastError)
+		  console.error(chrome.runtime.lastError);
+	      // `tab` will either be a `tabs.Tab` instance or `undefined`.
+	      //	      callback(tab)
+	      console.log(tab);
+	      var url = new URL( tab.url );
+	      console.log( url.hostname );
+	      switch (url.hostname) {
+		  // check
+ 	      case "www.barrons.com":
+		  extScript = "clear-barrons.js";
+		  break;
+ 	      case "www.bizjournals.com":
+		  execScript( tab.id, "clear-bizjournals.js" );
+		  break;
+		  // check
+ 	      case "www.bloomberg.com":
+		  extScript = "clear-bloomberg.js";
+		  break;
+	      case "www.bostonglobe.com":
+		  execScript( tab.id, "clear-bostonglobe.js" );
+		  break;
+		  // check
+	      case "markets.businessinsider.com":
+	      case "www.businessinsider.com":
+		  execScript( tab.id, "clear-businessinsider.js" );
+		  break;
+		  // check
+	      case "www.chicagotribune.com":
+		  execScript( tab.id, "clear-chicagotribune.js" );
+		  break;
+		  // check
+	      case "www.cnbc.com":
+		  execScript( tab.id, "clear-cnbc.js" );
+		  break;
+		  // check
+   	      case "www.dailymail.co.uk":
+		  execScript( tab.id, "clear-dailymail.js" );
+		  break;
+		  // check
+	      case "www.forbes.com":
+		  execScript( tab.id, "clear-forbes.js" );
+		  break;
+		  // check
+	      case "www.foreignpolicy.com":
+	      case "foreignpolicy.com":
+		  execScript( tab.id, "clear-foreignpolicy.js" );
+		  break;
+		  // check
+	      case "www.fortune.com":
+	      case "fortune.com":
+		  execScript( tab.id, "clear-fortune.js" );
+		  break;
+		  // check
+	      case "www.foxbusiness.com":
+		  execScript( tab.id, "clear-foxbusiness.js" );
+		  break;
+		  // check
+	      case "www.haaretz.com":
+		  execScript( tab.id, "clear-haaretz.js" );
+		  break;
+		  // check
+	      case "www.houstonchronicle.com":
+		  execScript( tab.id, "clear-sfchronicle.js" );
+		  break;
+		  // check
+	      case "www.latimes.com":
+		  execScript( tab.id, "clear-latimes.js" );
+		  break;
+		  // check
+	      case "www.mediaite.com":
+		  execScript( tab.id, "clear-mediaite.js" );
+		  break;
+		  // check
+	      case "www.messari.io":
+	      case "messari.io":
+		  execScript( tab.id, "clear-messari.js" );
+		  break;
+		  // check
+	      case "www.metro.co.uk":
+	      case "metro.co.uk":
+		  execScript( tab.id, "clear-metroco.js" );
+		  break;
+		  // check
+ 	      case "www.nationalgeographic.com":
+		  execScript( tab.id, "clear-nationalgeographic.js" );
+		  break;
+		  // check
+	      case "www.nbcnews.com":
+		  execScript( tab.id, "clear-nbcnews.js" );
+		  break;
+		  // check
+ 	      case "www.newyorker.com":
+		  execScript( tab.id, "clear-newyorker.js" );
+		  break;
+		  // check
+ 	      case "www.nymag.com":
+ 	      case "nymag.com":
+		  execScript( tab.id, "clear-nymag.js" );
+		  break;
+		  // check
+ 	      case "www.nytimes.com":
+ 	      case "cooking.nytimes.com":
+		  extScript = "clear-nytimes.js";
+		  break;
+ 	      case "www.outsideonline.com":
+		  extScript = "clear-outsideonline.js";
+		  break;
+	      case "www.rappler.com":
+		  execScript( tab.id, "clear-rappler.js" );
+		  break;
+		  // check
+	      case "www.reuters.com":
+		  execScript( tab.id, "clear-reuters.js" );
+		  break;
+		  // check
+	      case "www.sandiegouniontribune.com":
+		  execScript( tab.id, "clear-latimes.js" );
+		  break;
+		  // check
+	      case "www.scmp.com":
+		  execScript( tab.id, "clear-scmp.js" );
+		  break;
+		  // check
+	      case "www.seekingalpha.com":
+	      case "seekingalpha.com":
+		  execScript( tab.id, "clear-seekingalpha.js" );
+		  break;
+		  // check
+	      case "www.sfchronicle.com":
+		  execScript( tab.id, "clear-sfchronicle.js" );
+		  break;
+	      case "slate.com":
+	      case "www.slate.com":
+		  execScript( tab.id, "clear-slate.js" );
+ 		  break;
+	      case "www.smdailyjournal.com":
+		  execScript( tab.id, "clear-smjournal.js" );
+		  break;
+		  // check
+	      case "www.star-telegram.com":
+		  execScript( tab.id, "clear-startelegram.js" );
+		  break;
+		  // check
+	      case "www.theatlantic.com":
+		  execScript( tab.id, "clear-theatlantic.js" );
+		  break;
+		  // check
+	      case "www.thedailybeast.com":
+		  execScript( tab.id, "clear-thedailybeast.js" );
+		  break;
+		  // check
+ 	      case "www.theguardian.com":
+		  execScript( tab.id, "clear-theguardian.js" );
+		  break;
+		  // check
+ 	      case "www.theintercept.com":
+ 	      case "theintercept.com":
+		  execScript( tab.id, "clear-theintercept.js" );
+		  break;
+		  // check
+ 	      case "www.vanityfair.com":
+		  execScript( tab.id, "clear-vanityfair.js" );
+		  break;
+		  // check
+	      case "www.washingtonpost.com":
+		  execScript( tab.id, "clear-wapo.js" );
+		  break;
+	      default:
+		  console.log( "unrecognized : ", tabs[0].url );
+	      }
+	      chrome.tabs.sendMessage(tab.id, { action: "callCrackerScript", scriptName: extScript }, (response) => {
+		  if (chrome.runtime.lastError) {
+		      console.error("Error:", chrome.runtime.lastError.message);
+		  } else {
+		      console.log("Response from content script:", response.status);
+		  }
+	      });
+          });
+      };
 
 
-/* 
-fix icon
-console.log does not seem to work
+/*
+  case "www.eastbaytimes.com":
+		  execScript( tab.id, "clear-eastbaytimes.js" );
+		  break;
+
+  case "www.sfgate.com":
+		  execScript( tab.id, "clear-sfgate.js" );
+		  break;
+
+  case "www.sltrib.com":
+		  execScript( tab.id, "clear-sltrib.js" );
+		  break;
+
 */
