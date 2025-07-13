@@ -11,6 +11,7 @@ helpers.removeClassNameFromFirstElement( 'fancybox-lock', 'HTML' );
 // remove modals
 
 helpers.removeElementById( 'modals' );
+helpers.removeElementById( 'mod-target-div' );
 
 var d;
 
@@ -67,4 +68,5 @@ if ( window.Fusion.globalContent != null ) {
     else {
 	adds = __NEXT_DATA__.props.pageProps.globalContent.content_elements;
     } 
+
 

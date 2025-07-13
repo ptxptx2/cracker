@@ -60,6 +60,9 @@ helpers.removeClassNameFromFirstElement("expanded", "DIV");
 // remove advertisement
 helpers.removeFirstElementByClassName("leaderboard-wrapper");
 
+// remove blur
+helpers.removeFirstElementByClassName("css-116kxa6");
+
 // put back text
 function runEmbedded() {
     // Put here whatever your script needs to do.
@@ -71,6 +74,8 @@ function runEmbedded() {
     if ( window.__preloadedData.initialData != null && window.__preloadedData.initialData.data.article.sprinkledBody.content != null ) {
 	adds = window.__preloadedData.initialData.data.article.sprinkledBody.content;
     }
+
+    console.log(adds);
     
     // adjusted to find other article-body
     // some articles have multiple grid-body class so not reliable; grid-article is 0 or 1;
@@ -167,11 +172,13 @@ function runEmbedded() {
 }
 
 
-function embed(fn) {
-    const script = document.createElement("script");
-    script.text = `(${fn.toString()})();`;
-    document.documentElement.appendChild(script);
-}
+// function embed(fn) {
+//    const script = document.createElement("script");
+//    script.text = `(${fn.toString()})();`;
+//    document.documentElement.appendChild(script);
+// }
 
-embed(runEmbedded);
+// embed(runEmbedded);
+runEmbedded();
 
+// embedTest();

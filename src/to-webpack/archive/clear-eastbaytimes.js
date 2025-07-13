@@ -1,3 +1,7 @@
+import * as helpers from '../common/helpers.js';
+
+helpers.removeFirstElementByClassName( "paywall-container" );
+
 // remove modal-scrollable and connext-modal-backdrop class
 d = document.getElementsByClassName("modal-scrollable");
 if ( d != null && d[0] != null ) {

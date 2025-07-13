@@ -360,12 +360,15 @@ function runEmbedded() {
 //    window.twittr.widgets.load();
 }
 
+runEmbedded()
 
+/*
 function embed(fn) {
     const script = document.createElement("script");
     script.text = `(${fn.toString()})();`;
     document.documentElement.appendChild(script);
-}
+    }
+    */
 
 // embed(runEmbedded);
 

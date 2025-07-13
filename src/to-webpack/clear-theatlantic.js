@@ -120,7 +120,9 @@ function embed(fn) {
     document.documentElement.appendChild(script);
 }
 
-embed(runEmbedded);
+// embed(runEmbedded);
+
+runEmbedded();
 
 // remove subscription ad
 
