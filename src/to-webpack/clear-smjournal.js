@@ -54,3 +54,8 @@ helpers.removeElementById( "sticky-anchor" );
 
 // set style display: block (from display:none) where class = subscriber-only
 helpers.setStyleByClassName( "subscriber-only", "display", "block" );
+
+// 20251101
+helpers.removeElementById( "access-offers-modal" );
+helpers.removeClassNameFromFirstElement( "modal-open", "BODY" );
+helpers.removeClassNameFromFirstElement( "modal-backdrop", "DIV" );
