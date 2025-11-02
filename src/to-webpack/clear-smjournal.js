@@ -59,3 +59,4 @@ helpers.setStyleByClassName( "subscriber-only", "display", "block" );
 helpers.removeElementById( "access-offers-modal" );
 helpers.removeClassNameFromFirstElement( "modal-open", "BODY" );
 helpers.removeClassNameFromFirstElement( "modal-backdrop", "DIV" );
+helpers.removeAttributeById( "hidden", "asset-content" );

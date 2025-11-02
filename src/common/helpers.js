@@ -227,3 +227,15 @@ export function setStyleAttributeByTagName( tagName, styleProperty, styleSetting
 	}
     }
 }
+
+
+export function removeAttributeById( attributeName, id ) {
+    if ( attributeName == null || id == null ) {
+	return 0
+    }
+    var d = document.getElementsById(id);
+    if ( d != null && d.length > 0 ) {
+	d.removeAttribute(attributeName);
+    }
+}
+
