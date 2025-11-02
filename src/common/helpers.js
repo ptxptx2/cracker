@@ -119,7 +119,7 @@ export function removeClassNameFromElementById( className, id ) {
 	return 0
     }
     var d = document.getElementById(id);
-    if ( d != null && d.length > 0 ) {
+    if ( d != null ) {
 	d.classList.remove(className);
     }
 }
@@ -234,7 +234,7 @@ export function removeAttributeById( attributeName, id ) {
 	return 0
     }
     var d = document.getElementById(id);
-    if ( d != null && d.length > 0 ) {
+    if ( d != null ) {
 	d.removeAttribute(attributeName);
     }
 }
