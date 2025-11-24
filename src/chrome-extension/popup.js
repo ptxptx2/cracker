@@ -62,7 +62,7 @@ let cracker = document.getElementById('cracker');
 		  execScript( tab.id, "clear-deadline.js" );
 		  break;
 		  // check
- 	      case "*.eater.com":
+ 	      case "sf.eater.com":
 		  extScript = "clear-eater.js";
 		  break;
 	      case "www.forbes.com":

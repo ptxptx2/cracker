@@ -43,7 +43,7 @@
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-eastbaytimes.js"} );
 			            break;
- 			        case "*.eater.com":
+ 			        case "sf.eater.com":
 			            chrome.tabs.executeScript( tabs[0].id,
 							   { file: "clear-eater.js"} );
 			            break;
