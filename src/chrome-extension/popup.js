@@ -57,6 +57,14 @@ let cracker = document.getElementById('cracker');
 		  execScript( tab.id, "clear-dailymail.js" );
 		  break;
 		  // check
+   	      case "www.deadline.com":
+   	      case "deadline.com":
+		  execScript( tab.id, "clear-deadline.js" );
+		  break;
+		  // check
+ 	      case "*.eater.com":
+		  extScript = "clear-eater.js";
+		  break;
 	      case "www.forbes.com":
 		  execScript( tab.id, "clear-forbes.js" );
 		  break;
